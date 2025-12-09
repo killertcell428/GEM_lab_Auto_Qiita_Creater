@@ -47,10 +47,12 @@ def execute_check_phase(article_state: ArticleState, context: Optional[Dict[str,
     process_type = crew_config.get("process", "sequential")
     if process_type == "hierarchical":
         process_type = "sequential"  # hierarchicalはmanager_llmが必要なため、sequentialにフォールバック
+    if process_type == "parallel":
+        process_type = "sequential"  # parallelは存在しないため、sequentialにフォールバック
     
     process_map = {
         "sequential": Process.sequential,
-        "parallel": Process.parallel
+        "hierarchical": Process.hierarchical
     }
     process = process_map.get(process_type, Process.sequential)
     

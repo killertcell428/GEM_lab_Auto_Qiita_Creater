@@ -39,6 +39,7 @@ export default function ArticleDetailPage() {
         loadArticle();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [events]);
 
   const loadArticle = async () => {
@@ -255,12 +256,12 @@ export default function ArticleDetailPage() {
           <div>
             <h3 className="text-lg font-semibold mb-4">フィードバック履歴</h3>
             <div className="space-y-4">
-              {article.feedbackHistory && article.feedbackHistory.length > 0 ? (
+              {article.feedbackHistory && Array.isArray(article.feedbackHistory) && article.feedbackHistory.length > 0 ? (
                 article.feedbackHistory.map((fb, idx) => (
                   <div key={idx} className="p-4 bg-gray-50 dark:bg-gray-800 rounded">
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{fb.content}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{fb.content || '（内容なし）'}</p>
                     <div className="text-xs text-gray-500">
-                      {fb.created_at && format(new Date(fb.created_at), 'yyyy年MM月dd日 HH:mm', { locale: ja })}
+                      {fb.created_at ? format(new Date(fb.created_at), 'yyyy年MM月dd日 HH:mm', { locale: ja }) : '-'}
                     </div>
                   </div>
                 ))
@@ -355,14 +356,14 @@ export default function ArticleDetailPage() {
         </div>
         <p className="text-gray-600 dark:text-gray-400 mb-2">{article.nextActionHint}</p>
         <div className="text-sm text-gray-500">
-          {article.createdAt && (
+          {article.createdAt ? (
             <span>作成: {format(new Date(article.createdAt), 'yyyy年MM月dd日 HH:mm', { locale: ja })}</span>
-          )}
-          {article.updatedAt && (
+          ) : null}
+          {article.updatedAt ? (
             <span className="ml-4">
               更新: {format(new Date(article.updatedAt), 'yyyy年MM月dd日 HH:mm', { locale: ja })}
             </span>
-          )}
+          ) : null}
         </div>
       </div>
 

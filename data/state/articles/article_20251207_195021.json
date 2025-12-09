@@ -108,10 +108,14 @@
   "qiita_url": "https://qiita.com/cocokara_bioinfo/items/ef5d30b522c88f309c9a",
   "qiita_item_id": "ef5d30b522c88f309c9a",
   "kpi": null,
-  "analysis_results": null,
+  "analysis_results": {
+    "performance": {},
+    "benchmark": {},
+    "trend": {}
+  },
   "lessons_learned": [],
   "human_feedback": [],
-  "current_phase": "check",
+  "current_phase": "act",
   "created_at": "2025-12-07T19:50:21.008625",
-  "updated_at": "2025-12-07T19:52:47.597200"
+  "updated_at": "2025-12-09T15:25:05.727228"
 }

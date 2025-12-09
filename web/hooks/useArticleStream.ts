@@ -30,10 +30,15 @@ export function useArticleStream(articleId: string | null) {
 
     eventSource.onmessage = (event) => {
       try {
-        const data: StreamEvent = JSON.parse(event.data);
+        // SSEイベントのdata:プレフィックスを除去
+        let dataStr = event.data;
+        if (dataStr.startsWith('data: ')) {
+          dataStr = dataStr.substring(6); // 'data: 'を除去
+        }
+        const data: StreamEvent = JSON.parse(dataStr);
         setEvents((prev) => [...prev, data]);
       } catch (err) {
-        console.error('Failed to parse SSE event:', err);
+        console.error('Failed to parse SSE event:', err, 'Raw data:', event.data);
       }
     };
 

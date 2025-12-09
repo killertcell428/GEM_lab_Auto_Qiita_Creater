@@ -25,10 +25,10 @@ export default function ArticleStatusCard({ article }: ArticleStatusCardProps) {
         </p>
         <div className="flex justify-between items-center text-xs text-gray-500 dark:text-gray-500">
           <span>
-            {article.createdAt && format(new Date(article.createdAt), 'yyyy年MM月dd日 HH:mm', { locale: ja })}
+            {article.createdAt ? format(new Date(article.createdAt), 'yyyy年MM月dd日 HH:mm', { locale: ja }) : '-'}
           </span>
           <span>
-            {article.updatedAt && format(new Date(article.updatedAt), 'yyyy年MM月dd日 HH:mm', { locale: ja })}
+            {article.updatedAt ? format(new Date(article.updatedAt), 'yyyy年MM月dd日 HH:mm', { locale: ja }) : '-'}
           </span>
         </div>
       </div>

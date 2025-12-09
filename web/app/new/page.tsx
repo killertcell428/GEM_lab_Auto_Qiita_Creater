@@ -32,7 +32,11 @@ export default function NewArticlePage() {
       }
       
       const article = await api.createArticle(formData);
-      router.push(`/articles/${article.id}`);
+      if (article && article.id) {
+        router.push(`/articles/${article.id}`);
+      } else {
+        throw new Error('記事の作成に失敗しました: レスポンスが不正です');
+      }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : '記事の作成に失敗しました';
       setError(errorMessage);
