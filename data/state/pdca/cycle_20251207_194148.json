@@ -1,0 +1,85 @@
+{
+  "cycle_id": "cycle_20251207_194148",
+  "article_id": "article_20251207_194148",
+  "plan_result": {
+    "topic": "CrewAIベースのQiita記事自動生成システム",
+    "research_report": "{\n  \"title\": \"AIネイティブエディタCursorとローカルLLM Ollamaで実現するバイオインフォマティクス解析の自動化＆Qiita自動投稿パイプライン構築\",\n  \"target_audience\": \"バイオインフォマティクス研究者・技術者、AIツールを活用した解析自動化に興味のあるエンジニア、Qiita記事の自動投稿パイプライン構築を目指す開発者\",\n  \"sections\": [\n    {\n      \"heading\": \"導入：バイオインフォマティクスとAI自動化の課題と可能性\",\n      \"content_outline\": \"巨大化するゲノムデータ解析における手作業の負担、AIを活用した自動化の重要性、モンスター生命体の機密情報を扱う際のセキュリティ課題を説明。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"CrewAIベースAIネイティブエディタ『Cursor』とローカルLLM『Ollama』の概要\",\n      \"content_outline\": \"CursorのVSCode互換AIエディタ機能、OllamaによるローカルLLM環境のセットアップと特徴。クラウドAIとローカルAIのハイブリッド運用のメリット。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"Qiita記事自動投稿パイプラインの技術的仕組み\",\n      \"content_outline\": \"PythonスクリプトによるQiita API投稿、GitHub Actions連携、API制限・タグ管理、環境構築手順を技術的に解説。\",\n      \"code_examples\": [\"Qiita投稿用Python関数例\", \"GitHub ActionsワークフローYAML\"]\n    },\n    {\n      \"heading\": \"実践編：実際に動くコード例で始めるQiita自動投稿\",\n      \"content_outline\": \"Pythonコードを使った記事投稿フローの実装例を紹介。GitHub Actionsの設定方法もコード付きで解説。\",\n      \"code_examples\": [\"Qiita投稿Python関数例\", \"GitHub Actionsワークフロー\"]\n    },\n    {\n      \"heading\": \"応用編：バイオインフォ解析へのAI自動化適用例と展望\",\n      \"content_outline\": \"ゲノムデータ解析レポートの自動生成、Jupyter AI連携、安全なローカルLLM運用の実践例、今後の技術進展予測を解説。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"まとめ\",\n      \"content_outline\": \"本記事の要点整理と、CrewAIを活用した次世代バイオインフォマティクス解析環境の利点・導入のポイントを総括。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"FAQ\",\n      \"content_outline\": \"よくある質問と回答（AIモデルの選び方、セキュリティ対策、投稿パイプラインのトラブルシューティングなど）。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"参考文献・公式リソース\",\n      \"content_outline\": \"Cursor, Ollama公式サイト、Qiita APIドキュメント、関連GitHubリポジトリなどのリンク集。\",\n      \"code_examples\": []\n    }\n  ],\n  \"code_placement\": [\n    {\n      \"section\": \"Qiita記事自動投稿パイプラインの技術的仕組み\",\n      \"description\": \"Qiita投稿用のPython関数例とGitHub ActionsのYAMLを掲載し技術詳細を示す。\"\n    },\n    {\n      \"section\": \"実践編：実際に動くコード例で始めるQiita自動投稿\",\n      \"description\": \"Qiita投稿API利用のサンプルコード、およびGitHub Actions設定例を具体的に提示し、実践的な導入を支援。\"\n    }\n  ],\n  \"continuity\": \"過去記事『PythonでQiita記事投稿を自動化するパイプライン構築』と『Python × GitHub ActionsでQiita自動投稿パイプライン構築術』の技術基盤を引き継ぎつつ、最新のAIネイティブエディタCursorとローカルLLM OllamaによるハイブリッドAI解析環境の導入方法を追加。よりセキュアで効率的な研究ワークフローの実現を目指すストーリーとする。\",\n  \"improvements\": [\n    \"実践で使える具体的コード例の充実で読者の導入障壁を下げる\",\n    \"ハイブリッドAI運用のメリット・運用例を詳述し理解促進を図る\",\n    \"FAQセクションを設けて導入時の疑問や技術的課題に回答\",\n    \"過去記事の内容と重複しないよう、AIエディタ・ローカルLLM部分にフォーカスを強める\",\n    \"セキュリティ面の重要性を強調し、機密データ扱いの現場に最適な構成を提示\"\n  ]\n}",
+    "plan": {
+      "title": "AIネイティブエディタCursorとローカルLLM Ollamaで実現するバイオインフォマティクス解析の自動化＆Qiita自動投稿パイプライン構築",
+      "target_audience": "バイオインフォマティクス研究者・技術者、AIツールを活用した解析自動化に興味のあるエンジニア、Qiita記事の自動投稿パイプライン構築を目指す開発者",
+      "sections": [
+        {
+          "heading": "導入：バイオインフォマティクスとAI自動化の課題と可能性",
+          "content_outline": "巨大化するゲノムデータ解析における手作業の負担、AIを活用した自動化の重要性、モンスター生命体の機密情報を扱う際のセキュリティ課題を説明。",
+          "code_examples": []
+        },
+        {
+          "heading": "CrewAIベースAIネイティブエディタ『Cursor』とローカルLLM『Ollama』の概要",
+          "content_outline": "CursorのVSCode互換AIエディタ機能、OllamaによるローカルLLM環境のセットアップと特徴。クラウドAIとローカルAIのハイブリッド運用のメリット。",
+          "code_examples": []
+        },
+        {
+          "heading": "Qiita記事自動投稿パイプラインの技術的仕組み",
+          "content_outline": "PythonスクリプトによるQiita API投稿、GitHub Actions連携、API制限・タグ管理、環境構築手順を技術的に解説。",
+          "code_examples": [
+            "Qiita投稿用Python関数例",
+            "GitHub ActionsワークフローYAML"
+          ]
+        },
+        {
+          "heading": "実践編：実際に動くコード例で始めるQiita自動投稿",
+          "content_outline": "Pythonコードを使った記事投稿フローの実装例を紹介。GitHub Actionsの設定方法もコード付きで解説。",
+          "code_examples": [
+            "Qiita投稿Python関数例",
+            "GitHub Actionsワークフロー"
+          ]
+        },
+        {
+          "heading": "応用編：バイオインフォ解析へのAI自動化適用例と展望",
+          "content_outline": "ゲノムデータ解析レポートの自動生成、Jupyter AI連携、安全なローカルLLM運用の実践例、今後の技術進展予測を解説。",
+          "code_examples": []
+        },
+        {
+          "heading": "まとめ",
+          "content_outline": "本記事の要点整理と、CrewAIを活用した次世代バイオインフォマティクス解析環境の利点・導入のポイントを総括。",
+          "code_examples": []
+        },
+        {
+          "heading": "FAQ",
+          "content_outline": "よくある質問と回答（AIモデルの選び方、セキュリティ対策、投稿パイプラインのトラブルシューティングなど）。",
+          "code_examples": []
+        },
+        {
+          "heading": "参考文献・公式リソース",
+          "content_outline": "Cursor, Ollama公式サイト、Qiita APIドキュメント、関連GitHubリポジトリなどのリンク集。",
+          "code_examples": []
+        }
+      ],
+      "code_placement": [
+        {
+          "section": "Qiita記事自動投稿パイプラインの技術的仕組み",
+          "description": "Qiita投稿用のPython関数例とGitHub ActionsのYAMLを掲載し技術詳細を示す。"
+        },
+        {
+          "section": "実践編：実際に動くコード例で始めるQiita自動投稿",
+          "description": "Qiita投稿API利用のサンプルコード、およびGitHub Actions設定例を具体的に提示し、実践的な導入を支援。"
+        }
+      ],
+      "continuity": "過去記事『PythonでQiita記事投稿を自動化するパイプライン構築』と『Python × GitHub ActionsでQiita自動投稿パイプライン構築術』の技術基盤を引き継ぎつつ、最新のAIネイティブエディタCursorとローカルLLM OllamaによるハイブリッドAI解析環境の導入方法を追加。よりセキュアで効率的な研究ワークフローの実現を目指すストーリーとする。",
+      "improvements": [
+        "実践で使える具体的コード例の充実で読者の導入障壁を下げる",
+        "ハイブリッドAI運用のメリット・運用例を詳述し理解促進を図る",
+        "FAQセクションを設けて導入時の疑問や技術的課題に回答",
+        "過去記事の内容と重複しないよう、AIエディタ・ローカルLLM部分にフォーカスを強める",
+        "セキュリティ面の重要性を強調し、機密データ扱いの現場に最適な構成を提示"
+      ]
+    }
+  },
+  "do_result": null,
+  "check_result": null,
+  "act_result": null,
+  "improvements": [],
+  "created_at": "2025-12-07T19:41:48.782333",
+  "updated_at": "2025-12-07T19:43:31.916567",
+  "completed_at": null
+}

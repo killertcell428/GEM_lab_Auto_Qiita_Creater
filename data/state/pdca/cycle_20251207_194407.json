@@ -1,0 +1,87 @@
+{
+  "cycle_id": "cycle_20251207_194407",
+  "article_id": "article_20251207_194407",
+  "plan_result": {
+    "topic": "CrewAIベースのQiita記事自動生成システム",
+    "research_report": "{\n  \"title\": \"Google Gemini×AWS Durable Functionsで実現するQiita記事自動生成システムの構築と運用\",\n  \"target_audience\": \"生成AI、自動化ツール、サーバーレスワークフローに興味のある中級〜上級のクラウドエンジニア、AIエンジニア、データエンジニア\",\n  \"sections\": [\n    {\n      \"heading\": \"導入：生成AIによる技術記事生産の革新背景\",\n      \"content_outline\": \"生成AIの注目度上昇と記事自動生成ニーズ、GeminiやDurable Functionsなど最新技術の重要性を紹介。なぜ高品質な自動生成が重要か、バイオインフォマティクス領域などでの応用を簡潔に述べる。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"CrewAI記事自動生成システムの全体像\",\n      \"content_outline\": \"Google Gemini LLM基盤、AWS Lambda Durable FunctionsのHITLワークフロー、BigQuery評価ログ基盤の連携構成を技術的に解説。RAG技術の活用も含め、システムのモジュラー設計を図解付きで説明。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"主要技術の詳細と実装ポイント\",\n      \"content_outline\": \"Gemini APIの呼び出し方法とカスタマイズ、Durable Functionsによる非同期状態管理、BigQueryスキーマ設計とSQL例、RAG文書チャンクング手法を順に解説。\",\n      \"code_examples\": [\n        \"Gemini API呼び出しPythonコード例\",\n        \"Durable FunctionsのPythonワークフローサンプル\",\n        \"BigQuery評価SQLクエリ例\",\n        \"RAG用文書チャンクングPythonコード\"\n      ]\n    },\n    {\n      \"heading\": \"実践編：Qiita記事自動生成に使えるコードスニペット集\",\n      \"content_outline\": \"各主要技術の連携による記事生成パイプラインの具体例。初稿生成・レビュー待機・自動修正のフロー実装、評価結果の集約とトラッキングを示す。\",\n      \"code_examples\": [\n        \"Gemini初稿・修正案生成関数\",\n        \"Durable FunctionsによるHITL待機ループ\",\n        \"BigQueryによる評価計測クエリ\"\n      ]\n    },\n    {\n      \"heading\": \"応用例：バイオインフォマティクス領域への展開\",\n      \"content_outline\": \"ゲノム解析レポートや論文レビューの自動化事例。大規模処理と品質保証のためのLLM評価ログ活用など、専門性の高い応用例を紹介。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"まとめと今後の展望\",\n      \"content_outline\": \"本システムの価値総括とLLM連携ワークフローの進化予想。Modular RAGの発展やクラウドサービス連携強化の可能性を提示。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"FAQ\",\n      \"content_outline\": \"導入から運用までよくある疑問を解決。APIキー管理、最大実行時間制限の対処、ログのプライバシー対応など。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"参考文献・リソース\",\n      \"content_outline\": \"公式ドキュメント、関連論文、過去のQiita記事などのリンク集。\",\n      \"code_examples\": []\n    }\n  ],\n  \"code_placement\": [\n    {\n      \"section\": \"主要技術の詳細と実装ポイント\",\n      \"description\": \"Gemini API呼び出し例、Durable Functionsの状態管理コード、BigQuery SQL、RAGチャンクング関数を掲載し、基礎理解を助ける\"\n    },\n    {\n      \"section\": \"実践編：Qiita記事自動生成に使えるコードスニペット集\",\n      \"description\": \"自動生成パイプライン全体のコードを示し、実際に動かせる状態にする\"\n    }\n  ],\n  \"continuity\": \"過去のPython×GitHub ActionsによるQiita自動投稿パイプライン構築記事の続編として位置づけ、単一パイプラインから複数サービス連携による自動化・品質管理の高度化を解説。過去記事読者がステップアップする内容。\",\n  \"improvements\": [\n    \"コード例を実践的かつモジュラーに整理し、初心者から中級者まで幅広く理解しやすく構成\",\n    \"図解やフロー図を増やし、複雑なシステム全体像の理解を促進\",\n    \"FAQを設けて導入時のハマりどころを先回り解説\",\n    \"応用例を明確に示し、専門分野への貢献可能性を強調\"\n  ]\n}",
+    "plan": {
+      "title": "Google Gemini×AWS Durable Functionsで実現するQiita記事自動生成システムの構築と運用",
+      "target_audience": "生成AI、自動化ツール、サーバーレスワークフローに興味のある中級〜上級のクラウドエンジニア、AIエンジニア、データエンジニア",
+      "sections": [
+        {
+          "heading": "導入：生成AIによる技術記事生産の革新背景",
+          "content_outline": "生成AIの注目度上昇と記事自動生成ニーズ、GeminiやDurable Functionsなど最新技術の重要性を紹介。なぜ高品質な自動生成が重要か、バイオインフォマティクス領域などでの応用を簡潔に述べる。",
+          "code_examples": []
+        },
+        {
+          "heading": "CrewAI記事自動生成システムの全体像",
+          "content_outline": "Google Gemini LLM基盤、AWS Lambda Durable FunctionsのHITLワークフロー、BigQuery評価ログ基盤の連携構成を技術的に解説。RAG技術の活用も含め、システムのモジュラー設計を図解付きで説明。",
+          "code_examples": []
+        },
+        {
+          "heading": "主要技術の詳細と実装ポイント",
+          "content_outline": "Gemini APIの呼び出し方法とカスタマイズ、Durable Functionsによる非同期状態管理、BigQueryスキーマ設計とSQL例、RAG文書チャンクング手法を順に解説。",
+          "code_examples": [
+            "Gemini API呼び出しPythonコード例",
+            "Durable FunctionsのPythonワークフローサンプル",
+            "BigQuery評価SQLクエリ例",
+            "RAG用文書チャンクングPythonコード"
+          ]
+        },
+        {
+          "heading": "実践編：Qiita記事自動生成に使えるコードスニペット集",
+          "content_outline": "各主要技術の連携による記事生成パイプラインの具体例。初稿生成・レビュー待機・自動修正のフロー実装、評価結果の集約とトラッキングを示す。",
+          "code_examples": [
+            "Gemini初稿・修正案生成関数",
+            "Durable FunctionsによるHITL待機ループ",
+            "BigQueryによる評価計測クエリ"
+          ]
+        },
+        {
+          "heading": "応用例：バイオインフォマティクス領域への展開",
+          "content_outline": "ゲノム解析レポートや論文レビューの自動化事例。大規模処理と品質保証のためのLLM評価ログ活用など、専門性の高い応用例を紹介。",
+          "code_examples": []
+        },
+        {
+          "heading": "まとめと今後の展望",
+          "content_outline": "本システムの価値総括とLLM連携ワークフローの進化予想。Modular RAGの発展やクラウドサービス連携強化の可能性を提示。",
+          "code_examples": []
+        },
+        {
+          "heading": "FAQ",
+          "content_outline": "導入から運用までよくある疑問を解決。APIキー管理、最大実行時間制限の対処、ログのプライバシー対応など。",
+          "code_examples": []
+        },
+        {
+          "heading": "参考文献・リソース",
+          "content_outline": "公式ドキュメント、関連論文、過去のQiita記事などのリンク集。",
+          "code_examples": []
+        }
+      ],
+      "code_placement": [
+        {
+          "section": "主要技術の詳細と実装ポイント",
+          "description": "Gemini API呼び出し例、Durable Functionsの状態管理コード、BigQuery SQL、RAGチャンクング関数を掲載し、基礎理解を助ける"
+        },
+        {
+          "section": "実践編：Qiita記事自動生成に使えるコードスニペット集",
+          "description": "自動生成パイプライン全体のコードを示し、実際に動かせる状態にする"
+        }
+      ],
+      "continuity": "過去のPython×GitHub ActionsによるQiita自動投稿パイプライン構築記事の続編として位置づけ、単一パイプラインから複数サービス連携による自動化・品質管理の高度化を解説。過去記事読者がステップアップする内容。",
+      "improvements": [
+        "コード例を実践的かつモジュラーに整理し、初心者から中級者まで幅広く理解しやすく構成",
+        "図解やフロー図を増やし、複雑なシステム全体像の理解を促進",
+        "FAQを設けて導入時のハマりどころを先回り解説",
+        "応用例を明確に示し、専門分野への貢献可能性を強調"
+      ]
+    }
+  },
+  "do_result": null,
+  "check_result": null,
+  "act_result": null,
+  "improvements": [],
+  "created_at": "2025-12-07T19:44:07.561268",
+  "updated_at": "2025-12-07T19:44:50.716387",
+  "completed_at": null
+}

@@ -1,0 +1,117 @@
+{
+  "article_id": "article_20251207_195021",
+  "topic": "CrewAIテスト",
+  "research_report": "{\n  \"title\": \"CursorとOllamaで実現する安全・高速ハイブリッドAI解析環境とQiita記事の自動投稿パイプライン構築\",\n  \"target_audience\": \"バイオインフォマティクス解析やAI支援開発に関心のある中上級Pythonエンジニア、GitHub Actions経験者。VSCode拡張やローカルLLMに興味がある技術者。\",\n  \"sections\": [\n    {\n      \"heading\": \"導入：AI技術とバイオ解析の融合がもたらす新たな可能性\",\n      \"content_outline\": \"バイオインフォマティクス解析におけるAIの活用背景と、安全性・効率性が求められる理由。CursorとOllamaの組み合わせによるハイブリッドAI環境の重要性を解説。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"CursorとOllamaの概要と技術的特徴\",\n      \"content_outline\": \"CursorのVSCodeベースAIネイティブエディタとしての機能、OllamaのローカルLLM実行環境の特徴を紹介。ハイブリッド環境による利点。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"ハイブリッドAI解析環境の構築手順\",\n      \"content_outline\": \"CursorとOllamaのインストール・設定方法。ローカルLLMとクラウドAIの切り替え設定。\",\n      \"code_examples\": [\n        \"Cursorインストール手順コード例\",\n        \"Ollamaインストールとモデル取得コマンド例\",\n        \"Cursorのハイブリッド接続設定例\"\n      ]\n    },\n    {\n      \"heading\": \"Qiita記事投稿パイプラインの技術構成と課題解決\",\n      \"content_outline\": \"PythonスクリプトとGitHub Actionsを用いたQiita記事自動投稿の仕組み。API仕様変更対応、Unicode対応、ログ出力、エラーハンドリングの工夫を詳細解説。\",\n      \"code_examples\": [\n        \"Python Qiita投稿スクリプト例\",\n        \"GitHub Actionsワークフロー設定例\"\n      ]\n    },\n    {\n      \"heading\": \"実践編：動くコード例による環境構築とパイプライン動作確認\",\n      \"content_outline\": \"上述構築手順やスクリプトの具体的動作例。Markdown記事の読み込みから公開までの流れを示し、手順書として機能するコードを提示。\",\n      \"code_examples\": [\n        \"Qiita投稿パイプラインの全体コード例\",\n        \"Cursor・Ollama 接続テストコード\"\n      ]\n    },\n    {\n      \"heading\": \"応用例：バイオインフォマティクス解析へのAI活用ケーススタディ\",\n      \"content_outline\": \"遺伝子データ解析支援、解析結果共有のための自動投稿パイプライン活用例。Jupyter AIとの連携も紹介。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"まとめ：安全性と効率性を両立するAI支援開発環境の未来\",\n      \"content_outline\": \"本記事の内容総括と今後の展望。ハイブリッドAI解析環境と自動投稿パイプラインの継続的活用の重要性を強調。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"FAQ\",\n      \"content_outline\": \"構築時によくあるトラブル、APIの仕様変更対応方法、ライセンスや推奨環境などのQ&A集。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"参考文献・リソース\",\n      \"content_outline\": \"公式サイトリンク、GitHubリポジトリ、関連ツールドキュメントのまとめ。\",\n      \"code_examples\": []\n    }\n  ],\n  \"code_placement\": [\n    {\n      \"section\": \"ハイブリッドAI解析環境の構築手順\",\n      \"description\": \"Cursor・Ollamaのインストールコマンド、ハイブリッド設定コード例を掲載\"\n    },\n    {\n      \"section\": \"Qiita記事投稿パイプラインの技術構成と課題解決\",\n      \"description\": \"Pythonスクリプト例とGitHub Actions設定を示し、自動投稿の仕組みを具体化\"\n    },\n    {\n      \"section\": \"実践編：動くコード例による環境構築とパイプライン動作確認\",\n      \"description\": \"上記コードの統合例と動作確認用テストコードを提示\"\n    }\n  ],\n  \"continuity\": \"過去記事で紹介したPython・GitHub ActionsによるQiita自動投稿技術を踏襲しつつ、最新のAIエディタCursorとローカルLLM Ollamaによる高度なAI解析環境を融合。記事ストーリーは自動化技術の進化とセキュリティ強化の連続性を持ち、読者が技術スキルを段階的に広げられるよう設計。\",\n  \"improvements\": [\n    \"ハイブリッドAI環境の技術詳細と実装例を加え最新トレンドを反映\",\n    \"Qiita投稿パイプラインの技術課題・解決策を具体的に解説し実践的価値を強化\",\n    \"コード例をセクションごとに明確に配置し理解促進を図る\",\n    \"過去記事では扱っていないローカルLLMの安全性・効率面に関する説明を追加\",\n    \"バイオインフォマティクス解析への具体的応用例を掲載し専門性を高める\"\n  ]\n}",
+  "plan": {
+    "title": "CursorとOllamaで実現する安全・高速ハイブリッドAI解析環境とQiita記事の自動投稿パイプライン構築",
+    "target_audience": "バイオインフォマティクス解析やAI支援開発に関心のある中上級Pythonエンジニア、GitHub Actions経験者。VSCode拡張やローカルLLMに興味がある技術者。",
+    "sections": [
+      {
+        "heading": "導入：AI技術とバイオ解析の融合がもたらす新たな可能性",
+        "content_outline": "バイオインフォマティクス解析におけるAIの活用背景と、安全性・効率性が求められる理由。CursorとOllamaの組み合わせによるハイブリッドAI環境の重要性を解説。",
+        "code_examples": []
+      },
+      {
+        "heading": "CursorとOllamaの概要と技術的特徴",
+        "content_outline": "CursorのVSCodeベースAIネイティブエディタとしての機能、OllamaのローカルLLM実行環境の特徴を紹介。ハイブリッド環境による利点。",
+        "code_examples": []
+      },
+      {
+        "heading": "ハイブリッドAI解析環境の構築手順",
+        "content_outline": "CursorとOllamaのインストール・設定方法。ローカルLLMとクラウドAIの切り替え設定。",
+        "code_examples": [
+          "Cursorインストール手順コード例",
+          "Ollamaインストールとモデル取得コマンド例",
+          "Cursorのハイブリッド接続設定例"
+        ]
+      },
+      {
+        "heading": "Qiita記事投稿パイプラインの技術構成と課題解決",
+        "content_outline": "PythonスクリプトとGitHub Actionsを用いたQiita記事自動投稿の仕組み。API仕様変更対応、Unicode対応、ログ出力、エラーハンドリングの工夫を詳細解説。",
+        "code_examples": [
+          "Python Qiita投稿スクリプト例",
+          "GitHub Actionsワークフロー設定例"
+        ]
+      },
+      {
+        "heading": "実践編：動くコード例による環境構築とパイプライン動作確認",
+        "content_outline": "上述構築手順やスクリプトの具体的動作例。Markdown記事の読み込みから公開までの流れを示し、手順書として機能するコードを提示。",
+        "code_examples": [
+          "Qiita投稿パイプラインの全体コード例",
+          "Cursor・Ollama 接続テストコード"
+        ]
+      },
+      {
+        "heading": "応用例：バイオインフォマティクス解析へのAI活用ケーススタディ",
+        "content_outline": "遺伝子データ解析支援、解析結果共有のための自動投稿パイプライン活用例。Jupyter AIとの連携も紹介。",
+        "code_examples": []
+      },
+      {
+        "heading": "まとめ：安全性と効率性を両立するAI支援開発環境の未来",
+        "content_outline": "本記事の内容総括と今後の展望。ハイブリッドAI解析環境と自動投稿パイプラインの継続的活用の重要性を強調。",
+        "code_examples": []
+      },
+      {
+        "heading": "FAQ",
+        "content_outline": "構築時によくあるトラブル、APIの仕様変更対応方法、ライセンスや推奨環境などのQ&A集。",
+        "code_examples": []
+      },
+      {
+        "heading": "参考文献・リソース",
+        "content_outline": "公式サイトリンク、GitHubリポジトリ、関連ツールドキュメントのまとめ。",
+        "code_examples": []
+      }
+    ],
+    "code_placement": [
+      {
+        "section": "ハイブリッドAI解析環境の構築手順",
+        "description": "Cursor・Ollamaのインストールコマンド、ハイブリッド設定コード例を掲載"
+      },
+      {
+        "section": "Qiita記事投稿パイプラインの技術構成と課題解決",
+        "description": "Pythonスクリプト例とGitHub Actions設定を示し、自動投稿の仕組みを具体化"
+      },
+      {
+        "section": "実践編：動くコード例による環境構築とパイプライン動作確認",
+        "description": "上記コードの統合例と動作確認用テストコードを提示"
+      }
+    ],
+    "continuity": "過去記事で紹介したPython・GitHub ActionsによるQiita自動投稿技術を踏襲しつつ、最新のAIエディタCursorとローカルLLM Ollamaによる高度なAI解析環境を融合。記事ストーリーは自動化技術の進化とセキュリティ強化の連続性を持ち、読者が技術スキルを段階的に広げられるよう設計。",
+    "improvements": [
+      "ハイブリッドAI環境の技術詳細と実装例を加え最新トレンドを反映",
+      "Qiita投稿パイプラインの技術課題・解決策を具体的に解説し実践的価値を強化",
+      "コード例をセクションごとに明確に配置し理解促進を図る",
+      "過去記事では扱っていないローカルLLMの安全性・効率面に関する説明を追加",
+      "バイオインフォマティクス解析への具体的応用例を掲載し専門性を高める"
+    ]
+  },
+  "content": "{\n  \"technical_accuracy\": \"高い。CursorとOllamaの技術的説明は正確かつ詳細で、ハイブリッドAI環境やQiita自動投稿のコード例も実用的かつ正しい。\",\n  \"structure_quality\": \"優れている。導入からまとめまで論理的な流れで構成されており、各セクションが目的に沿って効果的に展開されている。\",\n  \"code_completeness\": \"十分である。コード例は全て実用的かつコピペで動作可能なレベルで、環境変数やエラー処理も含む。\",\n  \"word_count\": 8300,\n  \"section_completeness\": \"全ての指定されたセクションを含み、必要な内容が全体的に網羅されている。\",\n  \"continuity\": \"過去記事のQiita自動投稿技術と論理的に連続性があり、読者のスキルアップを念頭に置いた構成となっている。\",\n  \"trending_features_reflection\": \"最新のハイブリッドAI環境の解説、技術課題への対策、コード設置工夫、ローカルLLMの安全性説明、専門的応用例などの特徴が反映されている。\",\n  \"overall_score\": 9,\n  \"improvements\": [\n    \"Cursorのフォールバック設定について、切り替え条件や理由をもう少し明確に説明する。\",\n    \"PythonスクリプトやGitHub Actionsでの依存管理（仮想環境やバージョン固定）について補足を加える。\",\n    \"Qiita投稿結果の画面例・スクリーンショットを例示し、実際の動作イメージをより具体化する。\",\n    \"外部リンクは新しいタブで開く等のユーザビリティ向上に配慮する。\",\n    \"OllamaのAPIポート番号が環境によって異なる場合の対処や設定例を追記する。\",\n    \"post_qiita.pyでAPIトークン未設定時のエラー処理を追加するとより堅牢になる。\"\n  ],\n  \"approval\": true\n}",
+  "review_result": {
+    "technical_accuracy": "高い。CursorとOllamaの技術的説明は正確かつ詳細で、ハイブリッドAI環境やQiita自動投稿のコード例も実用的かつ正しい。",
+    "structure_quality": "優れている。導入からまとめまで論理的な流れで構成されており、各セクションが目的に沿って効果的に展開されている。",
+    "code_completeness": "十分である。コード例は全て実用的かつコピペで動作可能なレベルで、環境変数やエラー処理も含む。",
+    "word_count": 8300,
+    "section_completeness": "全ての指定されたセクションを含み、必要な内容が全体的に網羅されている。",
+    "continuity": "過去記事のQiita自動投稿技術と論理的に連続性があり、読者のスキルアップを念頭に置いた構成となっている。",
+    "trending_features_reflection": "最新のハイブリッドAI環境の解説、技術課題への対策、コード設置工夫、ローカルLLMの安全性説明、専門的応用例などの特徴が反映されている。",
+    "overall_score": 9,
+    "improvements": [
+      "Cursorのフォールバック設定について、切り替え条件や理由をもう少し明確に説明する。",
+      "PythonスクリプトやGitHub Actionsでの依存管理（仮想環境やバージョン固定）について補足を加える。",
+      "Qiita投稿結果の画面例・スクリーンショットを例示し、実際の動作イメージをより具体化する。",
+      "外部リンクは新しいタブで開く等のユーザビリティ向上に配慮する。",
+      "OllamaのAPIポート番号が環境によって異なる場合の対処や設定例を追記する。",
+      "post_qiita.pyでAPIトークン未設定時のエラー処理を追加するとより堅牢になる。"
+    ],
+    "approval": true
+  },
+  "qiita_url": "https://qiita.com/cocokara_bioinfo/items/ef5d30b522c88f309c9a",
+  "qiita_item_id": "ef5d30b522c88f309c9a",
+  "kpi": null,
+  "analysis_results": null,
+  "lessons_learned": [],
+  "human_feedback": [],
+  "current_phase": "check",
+  "created_at": "2025-12-07T19:50:21.008625",
+  "updated_at": "2025-12-07T19:52:47.597200"
+}

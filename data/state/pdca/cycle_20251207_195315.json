@@ -1,0 +1,105 @@
+{
+  "cycle_id": "cycle_20251207_195315",
+  "article_id": "article_20251207_195315",
+  "plan_result": {
+    "topic": "CrewAIベースのQiita記事自動生成システム",
+    "research_report": "{\n  \"title\": \"Cursor×Ollama×GitHub Actionsで実現するバイオインフォ向けQiita自動投稿パイプライン構築ガイド\",\n  \"target_audience\": \"PythonとGitHub Actionsの基本知識があるエンジニア・研究者。特にバイオインフォマティクスの解析自動化と機密データの安全な取り扱いに関心があるQiita記事投稿自動化の実践者向け。\",\n  \"sections\": [\n    {\n      \"heading\": \"導入：AIツールと自動投稿が切り拓くバイオインフォ解析の未来\",\n      \"content_outline\": \"バイオインフォマティクス解析の共有効率化の課題と、CursorやOllamaによる新たなコード生成・解析支援環境の重要性を背景に述べる。Qiita自動投稿パイプラインと連携することで得られる効果を紹介。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"CursorとOllamaとは？最新AIツールの特徴と活用ポイント\",\n      \"content_outline\": \"CursorのVSCodeベースAIネイティブエディタとしての機能、OllamaのローカルLLMによるセキュアなコード解析環境を詳述。二つのツールのハイブリッド活用戦略も解説。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"Qiita自動投稿パイプラインの構成と仕組み\",\n      \"content_outline\": \"PythonスクリプトとQiita API連携の基本構成、GitHub ActionsによるCI/CD自動化の概要と設定例を説明。APIのタグ制限やエラーハンドリングなど運用上の注意点も解説。\",\n      \"code_examples\": [\"PythonのQiita投稿スクリプト例\"]\n    },\n    {\n      \"heading\": \"実践編：CursorとOllamaを組み合わせたコード自動生成とQiita投稿の一連実装例\",\n      \"content_outline\": \"Cursorを用いたコード編集＆生成例、OllamaでのローカルLLM活用例を示し、その成果をPythonスクリプトでQiitaに投稿するフローを具体的コード付きで紹介。\",\n      \"code_examples\": [\"Cursorを使ったコード編集例\", \"OllamaでのローカルLLM呼び出し例\", \"Qiita投稿用Pythonスクリプト\", \"GitHub Actionsワークフロー設定ファイル\"]\n    },\n    {\n      \"heading\": \"応用例：バイオインフォマティクスのゲノム解析レポート自動投稿への適用\",\n      \"content_outline\": \"実際の遺伝子解析結果レポート自動生成、機密情報の安全処理、共有効率化の仕組みを事例で示す。モンスター生命体解析に向けた展望も紹介。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"まとめ：AI活用による安全かつ効率的なQiita自動投稿環境の構築ポイント\",\n      \"content_outline\": \"本記事の要点を振り返り、今後の技術進展を見据えた活用の可能性を述べる。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"FAQ：よくある質問とトラブルシューティング\",\n      \"content_outline\": \"Qiita APIの制限対応、Cursor/Ollamaの導入上の注意点、GitHub Actionsでのエラー対策など実務的なQ&Aを掲載。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"参考文献・関連リンク\",\n      \"content_outline\": \"公式サイト、APIドキュメント、関連ライブラリ・ツールなどへのリンク集。\",\n      \"code_examples\": []\n    }\n  ],\n  \"code_placement\": [\n    {\n      \"section\": \"Qiita自動投稿パイプラインの構成と仕組み\",\n      \"description\": \"Qiita記事投稿を行うPythonスクリプトの全体コード例を掲載し、APIとの連携方法を解説。\"\n    },\n    {\n      \"section\": \"実践編：CursorとOllamaを組み合わせたコード自動生成とQiita投稿の一連実装例\",\n      \"description\": \"Cursorでのコード編集例、OllamaでのLLM呼び出しサンプル、Qiita投稿Pythonスクリプト、GitHub Actions設定ファイルを段階的に示し、連携の具体的動作を実演。\"\n    }\n  ],\n  \"continuity\": \"過去記事で扱ったPythonとGitHub ActionsによるQiita投稿自動化から発展し、最新のAIコード編集ツールCursorとローカルLLM Ollamaを取り入れることで、安全性と効率性を大幅に高めた応用技術の紹介に繋げている。読者は既存の記事知識を踏まえつつ、最新技術の活用法とバイオインフォ領域での実践応用を学べる構成。\",\n  \"improvements\": [\n    \"CursorとOllamaの最新AI技術を組み込み、単なる投稿自動化からAIによるコード生成・編集支援の要素を加えて内容をアップデート。\",\n    \"バイオインフォマティクスなど特定分野の応用例にフォーカスし、ターゲットの専門性を高めて読者のニーズに即した実践的記事とする。\",\n    \"実践コード例やワークフロー例を詳細に配置し、読者が手を動かして理解・実装可能な構成に。\",\n    \"FAQや参考文献を設け、運用時の疑問や環境構築の補助情報を充実させ、記事価値を向上。\"\n  ]\n}",
+    "plan": {
+      "title": "Cursor×Ollama×GitHub Actionsで実現するバイオインフォ向けQiita自動投稿パイプライン構築ガイド",
+      "target_audience": "PythonとGitHub Actionsの基本知識があるエンジニア・研究者。特にバイオインフォマティクスの解析自動化と機密データの安全な取り扱いに関心があるQiita記事投稿自動化の実践者向け。",
+      "sections": [
+        {
+          "heading": "導入：AIツールと自動投稿が切り拓くバイオインフォ解析の未来",
+          "content_outline": "バイオインフォマティクス解析の共有効率化の課題と、CursorやOllamaによる新たなコード生成・解析支援環境の重要性を背景に述べる。Qiita自動投稿パイプラインと連携することで得られる効果を紹介。",
+          "code_examples": []
+        },
+        {
+          "heading": "CursorとOllamaとは？最新AIツールの特徴と活用ポイント",
+          "content_outline": "CursorのVSCodeベースAIネイティブエディタとしての機能、OllamaのローカルLLMによるセキュアなコード解析環境を詳述。二つのツールのハイブリッド活用戦略も解説。",
+          "code_examples": []
+        },
+        {
+          "heading": "Qiita自動投稿パイプラインの構成と仕組み",
+          "content_outline": "PythonスクリプトとQiita API連携の基本構成、GitHub ActionsによるCI/CD自動化の概要と設定例を説明。APIのタグ制限やエラーハンドリングなど運用上の注意点も解説。",
+          "code_examples": [
+            "PythonのQiita投稿スクリプト例"
+          ]
+        },
+        {
+          "heading": "実践編：CursorとOllamaを組み合わせたコード自動生成とQiita投稿の一連実装例",
+          "content_outline": "Cursorを用いたコード編集＆生成例、OllamaでのローカルLLM活用例を示し、その成果をPythonスクリプトでQiitaに投稿するフローを具体的コード付きで紹介。",
+          "code_examples": [
+            "Cursorを使ったコード編集例",
+            "OllamaでのローカルLLM呼び出し例",
+            "Qiita投稿用Pythonスクリプト",
+            "GitHub Actionsワークフロー設定ファイル"
+          ]
+        },
+        {
+          "heading": "応用例：バイオインフォマティクスのゲノム解析レポート自動投稿への適用",
+          "content_outline": "実際の遺伝子解析結果レポート自動生成、機密情報の安全処理、共有効率化の仕組みを事例で示す。モンスター生命体解析に向けた展望も紹介。",
+          "code_examples": []
+        },
+        {
+          "heading": "まとめ：AI活用による安全かつ効率的なQiita自動投稿環境の構築ポイント",
+          "content_outline": "本記事の要点を振り返り、今後の技術進展を見据えた活用の可能性を述べる。",
+          "code_examples": []
+        },
+        {
+          "heading": "FAQ：よくある質問とトラブルシューティング",
+          "content_outline": "Qiita APIの制限対応、Cursor/Ollamaの導入上の注意点、GitHub Actionsでのエラー対策など実務的なQ&Aを掲載。",
+          "code_examples": []
+        },
+        {
+          "heading": "参考文献・関連リンク",
+          "content_outline": "公式サイト、APIドキュメント、関連ライブラリ・ツールなどへのリンク集。",
+          "code_examples": []
+        }
+      ],
+      "code_placement": [
+        {
+          "section": "Qiita自動投稿パイプラインの構成と仕組み",
+          "description": "Qiita記事投稿を行うPythonスクリプトの全体コード例を掲載し、APIとの連携方法を解説。"
+        },
+        {
+          "section": "実践編：CursorとOllamaを組み合わせたコード自動生成とQiita投稿の一連実装例",
+          "description": "Cursorでのコード編集例、OllamaでのLLM呼び出しサンプル、Qiita投稿Pythonスクリプト、GitHub Actions設定ファイルを段階的に示し、連携の具体的動作を実演。"
+        }
+      ],
+      "continuity": "過去記事で扱ったPythonとGitHub ActionsによるQiita投稿自動化から発展し、最新のAIコード編集ツールCursorとローカルLLM Ollamaを取り入れることで、安全性と効率性を大幅に高めた応用技術の紹介に繋げている。読者は既存の記事知識を踏まえつつ、最新技術の活用法とバイオインフォ領域での実践応用を学べる構成。",
+      "improvements": [
+        "CursorとOllamaの最新AI技術を組み込み、単なる投稿自動化からAIによるコード生成・編集支援の要素を加えて内容をアップデート。",
+        "バイオインフォマティクスなど特定分野の応用例にフォーカスし、ターゲットの専門性を高めて読者のニーズに即した実践的記事とする。",
+        "実践コード例やワークフロー例を詳細に配置し、読者が手を動かして理解・実装可能な構成に。",
+        "FAQや参考文献を設け、運用時の疑問や環境構築の補助情報を充実させ、記事価値を向上。"
+      ]
+    }
+  },
+  "do_result": {
+    "content": "{\n  \"technical_accuracy\": \"記事の技術内容は最新かつ具体的で、CursorやOllamaの特徴や活用法、Qiita APIとの連携やGitHub Actions活用法まで誤りなく丁寧に説明されている。Pythonスクリプトのコード例も実務レベルで適切であり、ローカルLLM活用による機密情報保護も含めバイオインフォ現場のニーズに合致した内容となっている。\",\n  \"structure_quality\": \"導入からツール紹介、仕組み説明、具体実装例、応用例、まとめ、FAQ、参考文献まで論理的に整った流れで、読者が段階的に理解を深められる。各セクションが相互に連携しており、実装例にも十分な提示があり構成の完成度が高い。\",\n  \"code_completeness\": \"提示されているPythonコード、GitHub Actions設定ファイルはすべて実行可能な水準で、コメントやエラーハンドリングも備わっている。環境変数設定の注意点も含むため、読者がコピー＆ペーストで動かせると判断できる。\",\n  \"word_count\": 4600,\n  \"section_completeness\": \"構成プランに記載の8つのセクションがすべて含まれており、FAQや参考文献もきちんと揃っている。内容の穴や欠落は見当たらない。\",\n  \"continuity\": \"過去記事との連携を冒頭および参考文献部分で示し、Python+GitHub ActionsによるQiita投稿自動化の記事の進化形として位置づけられている。読者視点での知識の積み上げを意識した構成で連続性は良好。\",\n  \"trending_features_reflection\": \"最新AI技術のCursorとローカルLLMのOllama連携を盛り込み、バイオインフォ特化の応用例、具体コード実装例の充実、FAQや運用ノウハウの提示など、現代的な読者ニーズとトレンドを十分に反映している。\",\n  \"overall_score\": 9,\n  \"improvements\": [\n    \"CursorおよびOllamaの導入手順をもう少し詳細に（例：環境構築手順やインストールコマンド）加え、初学者対応を強化する。\",\n    \"Qiita APIのエラーハンドリング例に再試行ロジックのサンプルコードを追加し、運用面の信頼性向上案を示す。\",\n    \"GitHub Actionsの実行例でワークフロー内のスクリプトパスを具体的に明示し誤解防止を図る。\",\n    \"用語集や略語説明をFAQ内に追加し、専門用語に不慣れな読者への配慮を強める。\",\n    \"応用例の具体的なゲノム解析レポートのサンプル内容（テキスト例や図の説明）を簡単にでも記載し、実践感を高める。\"\n  ],\n  \"approval\": true\n}",
+    "review_result": {
+      "technical_accuracy": "記事の技術内容は最新かつ具体的で、CursorやOllamaの特徴や活用法、Qiita APIとの連携やGitHub Actions活用法まで誤りなく丁寧に説明されている。Pythonスクリプトのコード例も実務レベルで適切であり、ローカルLLM活用による機密情報保護も含めバイオインフォ現場のニーズに合致した内容となっている。",
+      "structure_quality": "導入からツール紹介、仕組み説明、具体実装例、応用例、まとめ、FAQ、参考文献まで論理的に整った流れで、読者が段階的に理解を深められる。各セクションが相互に連携しており、実装例にも十分な提示があり構成の完成度が高い。",
+      "code_completeness": "提示されているPythonコード、GitHub Actions設定ファイルはすべて実行可能な水準で、コメントやエラーハンドリングも備わっている。環境変数設定の注意点も含むため、読者がコピー＆ペーストで動かせると判断できる。",
+      "word_count": 4600,
+      "section_completeness": "構成プランに記載の8つのセクションがすべて含まれており、FAQや参考文献もきちんと揃っている。内容の穴や欠落は見当たらない。",
+      "continuity": "過去記事との連携を冒頭および参考文献部分で示し、Python+GitHub ActionsによるQiita投稿自動化の記事の進化形として位置づけられている。読者視点での知識の積み上げを意識した構成で連続性は良好。",
+      "trending_features_reflection": "最新AI技術のCursorとローカルLLMのOllama連携を盛り込み、バイオインフォ特化の応用例、具体コード実装例の充実、FAQや運用ノウハウの提示など、現代的な読者ニーズとトレンドを十分に反映している。",
+      "overall_score": 9,
+      "improvements": [
+        "CursorおよびOllamaの導入手順をもう少し詳細に（例：環境構築手順やインストールコマンド）加え、初学者対応を強化する。",
+        "Qiita APIのエラーハンドリング例に再試行ロジックのサンプルコードを追加し、運用面の信頼性向上案を示す。",
+        "GitHub Actionsの実行例でワークフロー内のスクリプトパスを具体的に明示し誤解防止を図る。",
+        "用語集や略語説明をFAQ内に追加し、専門用語に不慣れな読者への配慮を強める。",
+        "応用例の具体的なゲノム解析レポートのサンプル内容（テキスト例や図の説明）を簡単にでも記載し、実践感を高める。"
+      ],
+      "approval": true
+    }
+  },
+  "check_result": null,
+  "act_result": null,
+  "improvements": [],
+  "created_at": "2025-12-07T19:53:15.566341",
+  "updated_at": "2025-12-07T19:56:01.304109",
+  "completed_at": null
+}

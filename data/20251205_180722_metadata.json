@@ -1,0 +1,23 @@
+{
+  "article_id": "20251205_180722",
+  "title": "爆速！LangChainとStreamlitで実現するAI駆動型バイオインフォマティクス解析環境構築術",
+  "status": "draft",
+  "tags": [
+    "バイオインフォマティクス",
+    "チュートリアル",
+    "LLM",
+    "初心者向け",
+    "自動化",
+    "データ分析",
+    "Streamlit",
+    "LangChain",
+    "AI",
+    "環境構築"
+  ],
+  "created_at": "2025-12-05T18:07:22.889781",
+  "updated_at": "2025-12-05T18:07:22.889781",
+  "md_filename": "20251205_180722_爆速_LangChainとStreamlitで実現するAI駆動型バイオインフォマティクス解析環境構築.md",
+  "scheduled_publish_at": null,
+  "published_at": null,
+  "qiita_item_id": null
+}

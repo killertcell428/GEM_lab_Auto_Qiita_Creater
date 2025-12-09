@@ -1,0 +1,84 @@
+{
+  "cycle_id": "cycle_20251207_194025",
+  "article_id": "article_20251207_194025",
+  "plan_result": {
+    "topic": "CrewAIベースのQiita記事自動生成システム",
+    "research_report": "{\n  \"title\": \"AI駆動環境によるバイオインフォマティクス解析とQiita記事自動投稿パイプライン構築\",\n  \"target_audience\": \"バイオインフォマティクス研究者、ソフトウェアエンジニア、AI活用による開発・記事自動化に興味がある中上級者\",\n  \"sections\": [\n    {\n      \"heading\": \"導入：背景と課題、なぜ今注目されているか\",\n      \"content_outline\": \"バイオインフォマティクスの解析量増加に伴う報告負荷、AIとローカルLLMの活用による効率化の必要性を解説。Qiita自動投稿の意義。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"CrewAIベースQiita記事自動生成システムの概要\",\n      \"content_outline\": \"Cursor、Ollama、GitHub Actionsを組み合わせたハイブリッドAI環境の全体像説明。主要技術の紹介。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"技術的な仕組み・詳細実装\",\n      \"content_outline\": \"Cursorのコンテキスト理解、ローカルLLM設定、GitHub Actionsワークフローの技術要素と設定例を解説。\",\n      \"code_examples\": [\n        \"GitHub Actions workflow `.github/workflows/qiita_post.yml` のサンプル\",\n        \"環境構築用シェルスクリプト（Ollamaインストール、モデル取得コマンド）\"\n      ]\n    },\n    {\n      \"heading\": \"実践編：動くコード例\",\n      \"content_outline\": \"具体的なPythonスクリプト例でモンスター生命体配列抽出、Qiita自動投稿スクリプトを示し、手順を解説。\",\n      \"code_examples\": [\n        \"モンスター配列抽出Pythonスクリプト\",\n        \"Qiita自動投稿Pythonスクリプト\"\n      ]\n    },\n    {\n      \"heading\": \"応用・発展・実用例\",\n      \"content_outline\": \"AI生成コードによる未知配列解析の効率化、機密データガイドライン対応、解析結果の自動ドキュメント化例、解析パイプライン自動構築。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"まとめ\",\n      \"content_outline\": \"調査結果の要点整理、技術の利点、今後の展望について簡潔にまとめる。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"FAQ\",\n      \"content_outline\": \"読者から想定される質問と回答を準備。例：CursorとOllamaの違い、GitHub Actionsの注意点。\",\n      \"code_examples\": []\n    },\n    {\n      \"heading\": \"参考文献・リソース\",\n      \"content_outline\": \"公式サイト、GitHubリポジトリ、関連Qiita記事などを網羅的に紹介。\",\n      \"code_examples\": []\n    }\n  ],\n  \"code_placement\": [\n    {\n      \"section\": \"技術的な仕組み・詳細実装\",\n      \"description\": \"GitHub Actionsのworkflowファイル、Ollamaインストールコマンドなど環境構築・設定関連コード\"\n    },\n    {\n      \"section\": \"実践編：動くコード例\",\n      \"description\": \"モンスター配列抽出スクリプト、Qiita記事自動投稿スクリプトのPythonコード例\"\n    }\n  ],\n  \"continuity\": \"過去のQiita自動投稿関連記事から続く発展系として、AIネイティブエディタCursorとローカルLLM Ollamaを組み合わせたハイブリッドAI解析環境構築を紹介。GitHub Actionsを活用した自動投稿パイプライン構築の実践的な技術解説として連続性を持たせ、読者の理解を深める。\",\n  \"improvements\": [\n    \"わかりやすい具体的コード例と実践的手順を多用し、読者の実装ハードルを下げる\",\n    \"技術詳細と応用例のバランスを取り、単なる理論ではなく即戦力の内容にする\",\n    \"セクションごとにFAQを準備し、質問への応答で読者の理解をサポートする\",\n    \"図やフローチャートを使った説明を検討し、複雑な構成を視覚的に把握しやすくする\"\n  ]\n}",
+    "plan": {
+      "title": "AI駆動環境によるバイオインフォマティクス解析とQiita記事自動投稿パイプライン構築",
+      "target_audience": "バイオインフォマティクス研究者、ソフトウェアエンジニア、AI活用による開発・記事自動化に興味がある中上級者",
+      "sections": [
+        {
+          "heading": "導入：背景と課題、なぜ今注目されているか",
+          "content_outline": "バイオインフォマティクスの解析量増加に伴う報告負荷、AIとローカルLLMの活用による効率化の必要性を解説。Qiita自動投稿の意義。",
+          "code_examples": []
+        },
+        {
+          "heading": "CrewAIベースQiita記事自動生成システムの概要",
+          "content_outline": "Cursor、Ollama、GitHub Actionsを組み合わせたハイブリッドAI環境の全体像説明。主要技術の紹介。",
+          "code_examples": []
+        },
+        {
+          "heading": "技術的な仕組み・詳細実装",
+          "content_outline": "Cursorのコンテキスト理解、ローカルLLM設定、GitHub Actionsワークフローの技術要素と設定例を解説。",
+          "code_examples": [
+            "GitHub Actions workflow `.github/workflows/qiita_post.yml` のサンプル",
+            "環境構築用シェルスクリプト（Ollamaインストール、モデル取得コマンド）"
+          ]
+        },
+        {
+          "heading": "実践編：動くコード例",
+          "content_outline": "具体的なPythonスクリプト例でモンスター生命体配列抽出、Qiita自動投稿スクリプトを示し、手順を解説。",
+          "code_examples": [
+            "モンスター配列抽出Pythonスクリプト",
+            "Qiita自動投稿Pythonスクリプト"
+          ]
+        },
+        {
+          "heading": "応用・発展・実用例",
+          "content_outline": "AI生成コードによる未知配列解析の効率化、機密データガイドライン対応、解析結果の自動ドキュメント化例、解析パイプライン自動構築。",
+          "code_examples": []
+        },
+        {
+          "heading": "まとめ",
+          "content_outline": "調査結果の要点整理、技術の利点、今後の展望について簡潔にまとめる。",
+          "code_examples": []
+        },
+        {
+          "heading": "FAQ",
+          "content_outline": "読者から想定される質問と回答を準備。例：CursorとOllamaの違い、GitHub Actionsの注意点。",
+          "code_examples": []
+        },
+        {
+          "heading": "参考文献・リソース",
+          "content_outline": "公式サイト、GitHubリポジトリ、関連Qiita記事などを網羅的に紹介。",
+          "code_examples": []
+        }
+      ],
+      "code_placement": [
+        {
+          "section": "技術的な仕組み・詳細実装",
+          "description": "GitHub Actionsのworkflowファイル、Ollamaインストールコマンドなど環境構築・設定関連コード"
+        },
+        {
+          "section": "実践編：動くコード例",
+          "description": "モンスター配列抽出スクリプト、Qiita記事自動投稿スクリプトのPythonコード例"
+        }
+      ],
+      "continuity": "過去のQiita自動投稿関連記事から続く発展系として、AIネイティブエディタCursorとローカルLLM Ollamaを組み合わせたハイブリッドAI解析環境構築を紹介。GitHub Actionsを活用した自動投稿パイプライン構築の実践的な技術解説として連続性を持たせ、読者の理解を深める。",
+      "improvements": [
+        "わかりやすい具体的コード例と実践的手順を多用し、読者の実装ハードルを下げる",
+        "技術詳細と応用例のバランスを取り、単なる理論ではなく即戦力の内容にする",
+        "セクションごとにFAQを準備し、質問への応答で読者の理解をサポートする",
+        "図やフローチャートを使った説明を検討し、複雑な構成を視覚的に把握しやすくする"
+      ]
+    }
+  },
+  "do_result": null,
+  "check_result": null,
+  "act_result": null,
+  "improvements": [],
+  "created_at": "2025-12-07T19:40:25.791570",
+  "updated_at": "2025-12-07T19:42:11.683932",
+  "completed_at": null
+}
