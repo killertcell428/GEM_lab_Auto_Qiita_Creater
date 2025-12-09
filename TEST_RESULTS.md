@@ -41,13 +41,13 @@
 .\start_dev.bat
 
 # 方法2: 手動で起動
-.\venv\Scripts\uvicorn.exe api.app.main:app --reload --host 0.0.0.0 --port 8000
+.\.venv\Scripts\uvicorn.exe api.app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ### テストの実行
 ```bash
 # テストスクリプトを実行
-.\venv\Scripts\python.exe test_api_endpoints.py
+.\.venv\Scripts\python.exe test_api_endpoints.py
 ```
 
 ### 手動での動作確認

@@ -100,7 +100,7 @@ export default function ArticleDetailPage() {
     setError(null);
     setSuccessMessage(null);
     try {
-      const result = await api.publishArticle(articleId);
+      const result = await api.publishToQiita(articleId);
       await loadArticle();
       if (result.url) {
         setSuccessMessage(`投稿が完了しました: ${result.url}`);
@@ -116,7 +116,7 @@ export default function ArticleDetailPage() {
 
   const handleSaveContent = async (content: string) => {
     try {
-      await api.updateArticle(articleId, content);
+      await api.updateArticle(articleId, { content });
       await loadArticle();
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : '保存に失敗しました';

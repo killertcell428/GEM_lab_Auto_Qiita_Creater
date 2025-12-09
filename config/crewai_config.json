@@ -1,0 +1,73 @@
+{
+  "crewai": {
+    "llm": {
+      "provider": "gemini",
+      "model": "gemini-2.5-pro",
+      "temperature": 0.7,
+      "max_tokens": 200000
+    },
+    "agents": {
+      "researcher": {
+        "max_iter": 3,
+        "verbose": true
+      },
+      "planner": {
+        "max_iter": 3,
+        "verbose": true
+      },
+      "writer": {
+        "max_iter": 5,
+        "verbose": true
+      },
+      "reviewer": {
+        "max_iter": 3,
+        "verbose": true
+      },
+      "performance_analyst": {
+        "max_iter": 3,
+        "verbose": true
+      },
+      "external_benchmark_analyst": {
+        "max_iter": 3,
+        "verbose": true
+      },
+      "domain_trend_analyst": {
+        "max_iter": 3,
+        "verbose": true
+      },
+      "editor_in_chief": {
+        "max_iter": 5,
+        "verbose": true
+      },
+      "human_feedback_agent": {
+        "max_iter": 2,
+        "verbose": true
+      }
+    },
+    "crews": {
+      "plan_crew": {
+        "process": "sequential",
+        "verbose": true
+      },
+      "do_crew": {
+        "process": "sequential",
+        "verbose": true
+      },
+      "check_crew": {
+        "process": "hierarchical",
+        "verbose": true
+      },
+      "act_crew": {
+        "process": "sequential",
+        "verbose": true
+      }
+    },
+    "state": {
+      "base_dir": "data/state",
+      "articles_dir": "data/state/articles",
+      "pdca_dir": "data/state/pdca",
+      "feedback_dir": "data/state/feedback"
+    }
+  }
+}
+

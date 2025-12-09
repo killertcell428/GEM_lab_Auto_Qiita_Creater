@@ -35,13 +35,13 @@ fi
 echo -e "${YELLOW}依存関係チェック中...${NC}"
 
 # Python依存関係
-if [ ! -d "venv" ]; then
+if [ ! -d ".venv" ]; then
     echo "Python仮想環境を作成中..."
-    python -m venv venv
+    python -m venv .venv
 fi
 
 echo "Python依存関係をインストール中..."
-source venv/bin/activate
+source .venv/bin/activate
 pip install -q -r requirements.txt
 pip install -q -r api/requirements.txt
 
@@ -59,7 +59,7 @@ echo ""
 
 # FastAPIサーバーをバックグラウンドで起動
 echo "FastAPIサーバーを起動中 (http://localhost:8000)..."
-source venv/bin/activate
+source .venv/bin/activate
 uvicorn api.app.main:app --reload --host 0.0.0.0 --port 8000 > /tmp/fastapi.log 2>&1 &
 FASTAPI_PID=$!
 

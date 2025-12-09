@@ -35,7 +35,7 @@ export default function HumanFeedbackPanel({ articleId, onFeedbackAdded }: Human
         intent: intent || undefined,
         priority,
       };
-      await api.createFeedback(articleId, request);
+      await api.addFeedback(articleId, request);
       setContent('');
       setTargetSection('');
       setIntent('');
