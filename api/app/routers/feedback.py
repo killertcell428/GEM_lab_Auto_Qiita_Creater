@@ -5,7 +5,6 @@ from api.app.models.feedback import FeedbackCreateRequest, FeedbackResponse
 from src.crewai.human_loop import HumanLoop
 from src.crewai.state.article_state import ArticleState
 from src.crewai.state.feedback_queue import HumanFeedback
-import uuid
 from datetime import datetime
 
 router = APIRouter()
@@ -31,6 +30,19 @@ async def create_feedback(article_id: str, request: FeedbackCreateRequest):
             target_agent=None,  # Human Feedback Agentが判定
             priority=request.priority
         )
+        # ArticleStateにも即時保存して履歴に反映
+        article_state.add_human_feedback({
+            "feedback_id": feedback.feedback_id,
+            "content": request.content.strip(),
+            "target_section": request.target_section,
+            "intent": request.intent,
+            "priority": request.priority or 5,
+            "status": "pending",
+            "phase": phase,
+            "created_at": datetime.now().isoformat(),
+            "processed_at": None
+        })
+        article_state.save()
         
         # フィードバックを処理（バックグラウンドで実行される想定）
         # 実際の処理は非同期で実行される

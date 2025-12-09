@@ -1,6 +1,7 @@
 """ViewModel変換ユーティリティ - ArticleState → ArticleViewModel"""
 from typing import Dict, Any, Optional
 from datetime import datetime
+import json
 
 
 def phase_to_status_text(phase: str) -> str:
@@ -35,6 +36,17 @@ def get_next_action_hint(phase: str, article_state: Dict[str, Any]) -> str:
         return "待機中"
 
 
+def is_json_string(value: str) -> bool:
+    """文字列がJSON形式かどうかを判定"""
+    if not isinstance(value, str) or not value.strip():
+        return False
+    try:
+        json.loads(value)
+        return True
+    except (json.JSONDecodeError, ValueError):
+        return False
+
+
 def article_state_to_viewmodel(article_state: Dict[str, Any]) -> Dict[str, Any]:
     """ArticleStateをArticleViewModelに変換"""
     phase = article_state.get("current_phase", "plan")
@@ -50,7 +62,16 @@ def article_state_to_viewmodel(article_state: Dict[str, Any]) -> Dict[str, Any]:
         title = "タイトル未設定"
     
     # markdownの取得（contentから、またはデフォルト値）
-    markdown = article_state.get("content") or ""
+    content = article_state.get("content") or ""
+    
+    # JSON文字列が入っている場合は警告を出す
+    if is_json_string(content):
+        article_id = article_state.get("article_id", "unknown")
+        print(f"[WARN] article_id={article_id}: contentフィールドにJSONが入っています。Markdownコンテンツが表示されません。")
+        # 空文字列にフォールバック（ユーザーにエラーメッセージを表示するため）
+        markdown = ""
+    else:
+        markdown = content
     
     return {
         "id": article_state.get("article_id"),
