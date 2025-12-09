@@ -194,3 +194,4 @@ uv pip freeze > requirements.txt
 - uv公式サイト: https://github.com/astral-sh/uv
 - Python 3.12ダウンロード: https://www.python.org/downloads/
 
+
