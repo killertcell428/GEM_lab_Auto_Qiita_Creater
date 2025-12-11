@@ -49,6 +49,9 @@ def is_json_string(value: str) -> bool:
 
 def article_state_to_viewmodel(article_state: Dict[str, Any]) -> Dict[str, Any]:
     """ArticleStateをArticleViewModelに変換"""
+    if not isinstance(article_state, dict):
+        raise ValueError("article_state が不正です（dict ではありません）")
+
     phase = article_state.get("current_phase", "plan")
     plan = article_state.get("plan", {})
     

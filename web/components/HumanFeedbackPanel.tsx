@@ -6,13 +6,15 @@ import { api, FeedbackCreateRequest } from '@/lib/api';
 interface HumanFeedbackPanelProps {
   articleId: string;
   onFeedbackAdded?: () => void;
+  defaultPhase?: string;
 }
 
-export default function HumanFeedbackPanel({ articleId, onFeedbackAdded }: HumanFeedbackPanelProps) {
+export default function HumanFeedbackPanel({ articleId, onFeedbackAdded, defaultPhase }: HumanFeedbackPanelProps) {
   const [content, setContent] = useState('');
   const [targetSection, setTargetSection] = useState<string>('');
   const [intent, setIntent] = useState<'修正したい' | 'もっと詳しく' | '方針を変えたい' | ''>('');
   const [priority, setPriority] = useState(5);
+  const [phase, setPhase] = useState<string>(defaultPhase || '');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -34,12 +36,14 @@ export default function HumanFeedbackPanel({ articleId, onFeedbackAdded }: Human
         target_section: targetSection || undefined,
         intent: intent || undefined,
         priority,
+        phase: phase || undefined,
       };
       await api.addFeedback(articleId, request);
       setContent('');
       setTargetSection('');
       setIntent('');
       setPriority(5);
+      setPhase(defaultPhase || '');
       if (onFeedbackAdded) {
         onFeedbackAdded();
       }
@@ -60,6 +64,27 @@ export default function HumanFeedbackPanel({ articleId, onFeedbackAdded }: Human
           {error}
         </div>
       )}
+
+      <div className="mb-2">
+        <label htmlFor="phase" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          対象フェーズ
+        </label>
+        <select
+          id="phase"
+          value={phase}
+          onChange={(e) => setPhase(e.target.value)}
+          className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+        >
+          <option value="">現在のフェーズ</option>
+          <option value="plan">Plan</option>
+          <option value="do">Do</option>
+          <option value="check">Check</option>
+          <option value="act">Act</option>
+          <option value="publish">Publish</option>
+          <option value="analyze">Analyze</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="feedback-content" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">

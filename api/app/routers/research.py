@@ -77,5 +77,6 @@ async def get_research_library() -> List[Dict[str, Any]]:
         
         return research_list
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"リサーチライブラリの取得に失敗しました: {str(e)}")
+        print(f"[ERROR] リサーチライブラリの取得に失敗しました: {str(e)}")
+        return []  # エラー時も空配列を返す
 

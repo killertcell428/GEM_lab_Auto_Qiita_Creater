@@ -3,6 +3,7 @@ from typing import Dict, Any, Optional, List
 from pathlib import Path
 import sys
 import json
+import traceback
 
 # プロジェクトルートをパスに追加
 project_root = Path(__file__).parent.parent.parent.parent
@@ -50,12 +51,20 @@ class ArticleService:
                 print(f"[ERROR] Plan Phase実行エラー (article_id: {article_id}): {str(e)}")
                 raise RuntimeError(f"Plan Phaseの実行に失敗しました: {str(e)}") from e
             
+            if article_state is None:
+                raise RuntimeError("Plan Phaseの結果が取得できませんでした（article_stateがNone）")
+            # to_dict() が None を返した場合に備えた防御
+            state_dict = article_state.to_dict() if hasattr(article_state, "to_dict") else None
+            if state_dict is None:
+                raise RuntimeError("Plan Phase結果のシリアライズに失敗しました（state_dictがNone）")
+            
             # ViewModelに変換
-            return article_state_to_viewmodel(article_state.to_dict())
+            return article_state_to_viewmodel(state_dict)
         except ValueError as e:
             raise
         except Exception as e:
             print(f"[ERROR] 記事作成エラー: {str(e)}")
+            traceback.print_exc()
             raise RuntimeError(f"記事の作成に失敗しました: {str(e)}") from e
     
     def get_article(self, article_id: str) -> Dict[str, Any]:

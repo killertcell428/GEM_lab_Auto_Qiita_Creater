@@ -57,14 +57,16 @@ app.add_middleware(
 )
 
 # ルーターの登録
+# 注意: より具体的なパス（pending-approval, research-library等）を先に登録する必要がある
+# そうしないと、/{article_id}パスが先にマッチしてしまう
+app.include_router(approval.router, prefix="/api/articles", tags=["approval"])
+app.include_router(research.router, prefix="/api/articles", tags=["research"])
+app.include_router(metrics.router, prefix="/api/articles", tags=["metrics"])
 app.include_router(articles.router, prefix="/api/articles", tags=["articles"])
 app.include_router(feedback.router, prefix="/api/articles", tags=["feedback"])
 app.include_router(phases.router, prefix="/api/articles", tags=["phases"])
 app.include_router(streaming.router, prefix="/api/articles", tags=["streaming"])
 app.include_router(settings.router, prefix="/api", tags=["settings"])
-app.include_router(approval.router, prefix="/api/articles", tags=["approval"])
-app.include_router(research.router, prefix="/api/articles", tags=["research"])
-app.include_router(metrics.router, prefix="/api/articles", tags=["metrics"])
 
 
 @app.get("/")

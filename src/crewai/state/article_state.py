@@ -48,7 +48,8 @@ class ArticleState:
     def save(self, base_dir: Optional[Path] = None):
         """StateをJSONファイルに保存"""
         if base_dir is None:
-            config = get_config()
+            # configがNoneでも落ちないように防御
+            config = get_config() or {}
             crewai_config = config.get("crewai", {})
             state_config = crewai_config.get("state", {})
             articles_dir = state_config.get("articles_dir", "data/state/articles")
@@ -65,7 +66,8 @@ class ArticleState:
     def load(cls, article_id: str, base_dir: Optional[Path] = None) -> "ArticleState":
         """StateをJSONファイルから読み込み"""
         if base_dir is None:
-            config = get_config()
+            # configがNoneでも落ちないように防御
+            config = get_config() or {}
             crewai_config = config.get("crewai", {})
             state_config = crewai_config.get("state", {})
             articles_dir = state_config.get("articles_dir", "data/state/articles")

@@ -35,11 +35,17 @@ export default function Dashboard() {
       setLoading(true);
       setError(null);
       
-      // 並列でデータを取得
+      // 並列でデータを取得（エラー時は空配列/デフォルト値を設定）
       const [articlesData, pendingData, summaryData] = await Promise.all([
-        api.listArticles(),
-        api.getPendingApprovalArticles(),
-        api.getDashboardSummary()
+        api.listArticles().catch(() => []),
+        api.getPendingApprovalArticles().catch(() => []),
+        api.getDashboardSummary().catch(() => ({
+          total_articles: 0,
+          total_likes: 0,
+          total_views: 0,
+          avg_engagement_rate: 0.0,
+          pending_approval_count: 0
+        }))
       ]);
       
       setArticles(articlesData);

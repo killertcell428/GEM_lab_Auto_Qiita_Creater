@@ -77,8 +77,9 @@ def execute_plan_phase(article_state: ArticleState, topic: str, context: Optiona
     planning_task = create_planning_task("", context)
     
     # Crew作成
-    config = get_config()
-    crewai_config = config.get("crewai", {})
+    # configがNoneでも落ちないよう防御
+    config = get_config() or {}
+    crewai_config = config.get("crewai", {}) if isinstance(config, dict) else {}
     crew_config = crewai_config.get("crews", {}).get("plan_crew", {})
     
     crew = Crew(

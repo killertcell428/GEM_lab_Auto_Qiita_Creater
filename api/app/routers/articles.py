@@ -5,6 +5,7 @@ from api.app.models.article import ArticleCreateRequest, ArticleUpdateRequest, A
 from api.app.services.article_service import ArticleService
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
+import traceback
 
 router = APIRouter()
 service = ArticleService()
@@ -48,6 +49,8 @@ async def create_article(request: ArticleCreateRequest, background_tasks: Backgr
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
+        print(f"[ERROR] /api/articles create_article: {str(e)}")
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"記事の作成に失敗しました: {str(e)}")
 
 

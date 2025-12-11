@@ -20,6 +20,27 @@ class ArticleUpdateRequest(BaseModel):
     content: Optional[str] = Field(None, description="記事本文（Markdown）")
     title: Optional[str] = Field(None, description="記事タイトル")
 
+class FeedbackCreateRequest(BaseModel):
+    """フィードバック作成リクエスト"""
+    content: str
+    target_section: Optional[str] = Field(None, description="対象セクション")
+    intent: Optional[str] = Field(None, description="意図")
+    priority: Optional[int] = Field(None, description="優先度（0-100）")
+    phase: Optional[str] = Field(None, description="対象フェーズ (plan/do/check/act/publish/analyze/other)")
+
+class FeedbackResponse(BaseModel):
+    """フィードバックレスポンス"""
+    feedback_id: str
+    article_id: str
+    content: str
+    target_section: Optional[str] = None
+    intent: Optional[str] = None
+    priority: int
+    status: str
+    created_at: str
+    processed_at: Optional[str] = None
+    phase: Optional[str] = None
+
 
 class ArticleViewModel(BaseModel):
     """記事ViewModel（UI用）"""

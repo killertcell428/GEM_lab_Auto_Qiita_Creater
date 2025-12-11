@@ -20,7 +20,8 @@ async def create_feedback(article_id: str, request: FeedbackCreateRequest):
             raise HTTPException(status_code=400, detail="フィードバック内容を入力してください")
         
         article_state = ArticleState.load(article_id)
-        phase = article_state.current_phase
+        # フェーズ指定があればそれを優先、なければ現在フェーズ
+        phase = request.phase or article_state.current_phase
         
         feedback = human_loop.add_feedback(
             article_id=article_id,
@@ -56,7 +57,8 @@ async def create_feedback(article_id: str, request: FeedbackCreateRequest):
             priority=feedback.priority,
             status=feedback.status,
             created_at=feedback.created_at,
-            processed_at=feedback.processed_at
+            processed_at=feedback.processed_at,
+            phase=phase
         )
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="記事が見つかりません")
@@ -83,7 +85,8 @@ async def get_feedback_history(article_id: str):
                 priority=fb.get("priority", 5),
                 status=fb.get("status", "pending"),
                 created_at=fb.get("created_at", ""),
-                processed_at=fb.get("processed_at")
+                processed_at=fb.get("processed_at"),
+                phase=fb.get("phase")
             )
             for fb in feedback_history
         ]
@@ -111,6 +114,8 @@ async def update_feedback(article_id: str, feedback_id: str, request: FeedbackCr
                     fb["intent"] = request.intent
                 if request.priority:
                     fb["priority"] = request.priority
+                if request.phase:
+                    fb["phase"] = request.phase
                 updated = True
                 break
         
@@ -131,7 +136,8 @@ async def update_feedback(article_id: str, feedback_id: str, request: FeedbackCr
             priority=updated_fb.get("priority", 5),
             status=updated_fb.get("status", "pending"),
             created_at=updated_fb.get("created_at", ""),
-            processed_at=updated_fb.get("processed_at")
+            processed_at=updated_fb.get("processed_at"),
+            phase=updated_fb.get("phase")
         )
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="記事が見つかりません")

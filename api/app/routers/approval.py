@@ -49,7 +49,8 @@ async def get_pending_approval_articles():
         
         return pending_articles
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        print(f"[ERROR] 承認待ち記事の取得に失敗しました: {str(e)}")
+        return []  # エラー時も空配列を返す
 
 
 @router.post("/{article_id}/approve")
