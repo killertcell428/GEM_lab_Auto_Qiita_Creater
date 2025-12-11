@@ -105,7 +105,14 @@ class ArticleService:
                     "phase": state_dict.get("current_phase", "plan"),
                     "nextActionHint": get_next_action_hint(state_dict.get("current_phase", "plan"), state_dict),
                     "createdAt": state_dict.get("created_at"),
-                    "updatedAt": state_dict.get("updated_at")
+                    "updatedAt": state_dict.get("updated_at"),
+                    # 承認関連フィールド
+                    "pendingApproval": state_dict.get("pending_approval", False),
+                    "approvalDeadline": state_dict.get("approval_deadline"),
+                    "approvalStatus": state_dict.get("approval_status"),
+                    "scheduledPublishDate": state_dict.get("scheduled_publish_date"),
+                    # KPIサマリー
+                    "kpiSummary": state_dict.get("kpi")
                 })
             except Exception as e:
                 print(f"Warning: Failed to load article {json_file.stem}: {e}")

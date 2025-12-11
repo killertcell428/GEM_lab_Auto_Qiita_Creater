@@ -8,6 +8,7 @@ import TabContainer from '@/components/TabContainer';
 import ArticleViewer from '@/components/ArticleViewer';
 import HumanFeedbackPanel from '@/components/HumanFeedbackPanel';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import WordCloud from '@/components/WordCloud';
 import { useArticleStream } from '@/hooks/useArticleStream';
 import { format } from 'date-fns';
 import { ja } from 'date-fns/locale/ja';
@@ -22,13 +23,24 @@ export default function ArticleDetailPage() {
   const [error, setError] = useState<string | null>(null);
   const [executing, setExecuting] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [keywords, setKeywords] = useState<Array<{ text: string; weight: number }>>([]);
   
   // ストリーミングフック
   const { events, connected } = useArticleStream(articleId);
 
   useEffect(() => {
     loadArticle();
+    loadKeywords();
   }, [articleId]);
+  
+  const loadKeywords = async () => {
+    try {
+      const data = await api.getArticleKeywords(articleId);
+      setKeywords(data.combined_keywords || []);
+    } catch (err) {
+      console.error('キーワード取得エラー:', err);
+    }
+  };
   
   // ストリーミングイベントで記事を更新
   useEffect(() => {
@@ -153,10 +165,156 @@ export default function ArticleDetailPage() {
     );
   }
 
+  const handleApprove = async () => {
+    if (!confirm('この記事を承認してQiitaに投稿しますか？')) return;
+    setError(null);
+    setSuccessMessage(null);
+    try {
+      const result = await api.approveArticle(articleId);
+      await loadArticle();
+      if (result.url) {
+        setSuccessMessage(`承認が完了し、投稿しました: ${result.url}`);
+      } else {
+        setSuccessMessage('承認が完了しました');
+      }
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : '承認に失敗しました';
+      setError(errorMessage);
+      console.error('承認エラー:', err);
+    }
+  };
+
   const tabs = [
     {
-      id: 'article',
-      label: 'Article',
+      id: 'overview',
+      label: 'Overview',
+      content: (
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-lg font-semibold mb-4">記事概要</h3>
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded space-y-3">
+              <div>
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">ステータス: </span>
+                <StatusBadge status={article.uiStatusText} phase={article.phase} />
+              </div>
+              <div>
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">次のアクション: </span>
+                <span className="text-sm text-gray-900 dark:text-white">{article.nextActionHint}</span>
+              </div>
+              {article.pendingApproval && article.approvalStatus === 'pending' && (
+                <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-medium text-yellow-800 dark:text-yellow-200">承認待ち</span>
+                    <button
+                      onClick={handleApprove}
+                      className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 text-sm"
+                    >
+                      承認して投稿
+                    </button>
+                  </div>
+                  {article.approvalDeadline && (
+                    <p className="text-sm text-yellow-700 dark:text-yellow-300">
+                      承認期限: {new Date(article.approvalDeadline).toLocaleString('ja-JP')}
+                    </p>
+                  )}
+                </div>
+              )}
+              {article.qiitaUrl && (
+                <div>
+                  <a
+                    href={article.qiitaUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    Qiitaで見る →
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="text-lg font-semibold mb-4">進捗タイムライン</h3>
+            <div className="space-y-4">
+              <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-medium">現在のPhase</span>
+                  <StatusBadge status={article.uiStatusText} phase={article.phase} />
+                </div>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{article.nextActionHint}</p>
+                {connected && (
+                  <div className="mt-2 text-xs text-green-600 dark:text-green-400">
+                    ● リアルタイム更新中
+                  </div>
+                )}
+              </div>
+              
+              {events.length > 0 && (
+                <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded">
+                  <h4 className="text-sm font-medium mb-2">イベント履歴</h4>
+                  <div className="space-y-2 max-h-48 overflow-y-auto">
+                    {events.slice(-10).reverse().map((event, idx) => (
+                      <div key={idx} className="text-xs text-gray-600 dark:text-gray-400">
+                        {event.type === 'phase_change' && (
+                          <div>
+                            Phase変更: {event.status_text} ({event.phase})
+                          </div>
+                        )}
+                        {event.type === 'connected' && (
+                          <div className="text-green-600 dark:text-green-400">
+                            ストリーミング接続完了
+                          </div>
+                        )}
+                        {event.type === 'error' && (
+                          <div className="text-red-600 dark:text-red-400">
+                            エラー: {event.message}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              <div className="space-y-2">
+                <button
+                  onClick={() => handleExecutePhase('plan')}
+                  disabled={executing !== null}
+                  className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+                >
+                  {executing === 'plan' ? '実行中...' : 'Plan Phase実行'}
+                </button>
+                <button
+                  onClick={() => handleExecutePhase('do')}
+                  disabled={executing !== null}
+                  className="w-full px-4 py-2 bg-yellow-600 text-white rounded-md hover:bg-yellow-700 disabled:opacity-50"
+                >
+                  {executing === 'do' ? '実行中...' : 'Do Phase実行'}
+                </button>
+                <button
+                  onClick={() => handleExecutePhase('check')}
+                  disabled={executing !== null}
+                  className="w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50"
+                >
+                  {executing === 'check' ? '実行中...' : 'Check Phase実行'}
+                </button>
+                <button
+                  onClick={() => handleExecutePhase('act')}
+                  disabled={executing !== null}
+                  className="w-full px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 disabled:opacity-50"
+                >
+                  {executing === 'act' ? '実行中...' : 'Act Phase実行'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      id: 'content',
+      label: 'Content',
       content: (
         <ArticleViewer
           markdown={article.markdown || ''}
@@ -166,8 +324,8 @@ export default function ArticleDetailPage() {
       ),
     },
     {
-      id: 'process',
-      label: 'AI Process',
+      id: 'performance',
+      label: 'Performance',
       content: (
         <div>
           <h3 className="text-lg font-semibold mb-4">進捗タイムライン</h3>
@@ -274,8 +432,8 @@ export default function ArticleDetailPage() {
       ),
     },
     {
-      id: 'analysis',
-      label: 'Analysis',
+      id: 'performance',
+      label: 'Performance',
       content: (
         <div className="space-y-6">
           <div>
@@ -289,6 +447,12 @@ export default function ArticleDetailPage() {
                 {executing === 'check' ? '分析中...' : '分析を実行'}
               </button>
             </div>
+            
+            {/* パフォーマンスグラフ */}
+            <div className="mb-6">
+              <PerformanceChart articleId={articleId} />
+            </div>
+            
             {article.analysisResults ? (
               <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded">
                 <h4 className="font-medium mb-2">分析結果</h4>
@@ -320,6 +484,47 @@ export default function ArticleDetailPage() {
                     {JSON.stringify(article.kpiSummary, null, 2)}
                   </pre>
                 )}
+              </div>
+            </div>
+          )}
+          
+          {/* キーワード分析 */}
+          {keywords.length > 0 && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4">キーワード分析</h3>
+              <WordCloud words={keywords} />
+            </div>
+          )}
+        </div>
+      ),
+    },
+    {
+      id: 'research',
+      label: 'Research',
+      content: (
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-lg font-semibold mb-4">リサーチ結果</h3>
+            {article.researchReport ? (
+              <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded">
+                <div className="prose dark:prose-invert max-w-none">
+                  <pre className="whitespace-pre-wrap text-sm">{article.researchReport}</pre>
+                </div>
+              </div>
+            ) : (
+              <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded">
+                <p className="text-gray-600 dark:text-gray-400">リサーチ結果はありません。Plan Phaseを実行してください。</p>
+              </div>
+            )}
+          </div>
+          
+          {article.plan && (
+            <div>
+              <h3 className="text-lg font-semibold mb-4">記事構成プラン</h3>
+              <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded">
+                <pre className="text-sm overflow-auto max-h-96">
+                  {JSON.stringify(article.plan, null, 2)}
+                </pre>
               </div>
             </div>
           )}
@@ -397,7 +602,7 @@ export default function ArticleDetailPage() {
       )}
 
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-        <TabContainer tabs={tabs} defaultTab="article" />
+        <TabContainer tabs={tabs} defaultTab="overview" />
       </div>
     </div>
   );

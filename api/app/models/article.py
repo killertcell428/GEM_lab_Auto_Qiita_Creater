@@ -38,6 +38,13 @@ class ArticleViewModel(BaseModel):
     createdAt: Optional[str] = None
     updatedAt: Optional[str] = None
     feedbackHistory: List[Dict[str, Any]] = []
+    # 承認関連フィールド
+    pendingApproval: bool = False
+    approvalDeadline: Optional[str] = None
+    approvalStatus: Optional[str] = None
+    scheduledPublishDate: Optional[str] = None
+    # リサーチ結果
+    researchReport: Optional[str] = None
 
 
 class ArticleListItem(BaseModel):

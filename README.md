@@ -26,16 +26,86 @@ CrewAIフレームワークを使用した、Qiita記事の生成から分析、
 
 ## セットアップ
 
-### 1. 依存パッケージのインストール
+### 前提条件
 
-```bash
-pip install -r requirements.txt
+- **Python 3.12** がインストールされていること
+- **uv** がインストールされていること（推奨）または通常のpip
+- **Node.js** がインストールされていること（Web UIを使用する場合）
+
+### 1. uvのインストール（推奨）
+
+**Windows (PowerShell):**
+```powershell
+powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-### 2. 設定ファイルの準備
+インストール後、PowerShellを再起動するか、以下を実行：
+```powershell
+$env:PATH = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+```
+
+**確認:**
+```powershell
+uv --version
+```
+
+詳細は [docs/SETUP_UV.md](docs/SETUP_UV.md) を参照してください。
+
+### 2. プロジェクトのセットアップ
+
+#### 方法A: 自動セットアップスクリプト（推奨）
+
+**Windows:**
+```powershell
+.\setup_uv.ps1
+```
+
+#### 方法B: 手動セットアップ
+
+**uvを使用する場合:**
+
+```powershell
+# Python 3.12で仮想環境を作成
+uv venv .venv --python 3.12
+
+# 仮想環境を有効化
+.\.venv\Scripts\Activate.ps1
+
+# 依存関係をインストール
+uv pip install -r requirements.txt
+uv pip install -r api/requirements.txt
+```
+
+**通常のpipを使用する場合:**
+
+```powershell
+# 仮想環境を作成
+python -m venv .venv
+
+# 仮想環境を有効化
+.\.venv\Scripts\Activate.ps1
+
+# 依存関係をインストール
+pip install -r requirements.txt
+pip install -r api/requirements.txt
+```
+
+### 3. 設定ファイルの準備
 
 #### 設定ファイルの作成
 
+**Windows (PowerShell):**
+```powershell
+# 設定ファイルが存在しない場合は、例ファイルからコピー
+if (-not (Test-Path config\config.json)) {
+    Copy-Item config\config.example.json config\config.json
+}
+if (-not (Test-Path config\crewai_config.json)) {
+    Copy-Item config\crewai_config.example.json config\crewai_config.json
+}
+```
+
+**Linux/Mac:**
 ```bash
 cp config/config.example.json config/config.json
 cp config/crewai_config.example.json config/crewai_config.json
@@ -84,12 +154,31 @@ SERPER_API_KEY=your_serper_api_key_here
 
 ## 使い方
 
+### 仮想環境の有効化
+
+**重要**: CLIコマンドを実行する前に、必ず仮想環境を有効化してください。
+
+**Windows (PowerShell):**
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+**Windows (CMD):**
+```cmd
+.venv\Scripts\activate.bat
+```
+
+**Linux/Mac:**
+```bash
+source .venv/bin/activate
+```
+
 ### 基本的な使い方
 
 #### フルPDCAサイクルの実行
 
-```bash
-# ドラフトファイルを指定してフルPDCAサイクルを実行
+```powershell
+# 仮想環境を有効化した後
 python main.py pdca --topic "Pythonでデータ解析" --draft-file "data/drafts/test_draft.md"
 
 # 自動投稿も実行
@@ -98,7 +187,7 @@ python main.py pdca --topic "Pythonでデータ解析" --draft-file "data/drafts
 
 #### 個別Phaseの実行
 
-```bash
+```powershell
 # Plan Phaseのみ実行
 python main.py plan --topic "Pythonでデータ解析" --article-id "article_20251207_123456"
 
@@ -111,6 +200,56 @@ python main.py check --article-id "article_20251207_123456"
 # Act Phaseのみ実行
 python main.py act --article-id "article_20251207_123456"
 ```
+
+#### Web UIで実行
+
+**PowerShellから実行する場合（推奨）:**
+```powershell
+# PowerShellスクリプト版を使用（推奨）
+.\start_dev.ps1
+```
+
+**注意**: PowerShellの実行ポリシーでエラーが出る場合：
+```powershell
+# 実行ポリシーを変更（現在のユーザーのみ）
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# または、一時的に実行ポリシーをバイパス
+powershell -ExecutionPolicy Bypass -File .\start_dev.ps1
+```
+
+**CMDから実行する場合:**
+```cmd
+start_dev.bat
+```
+
+**PowerShellから.batファイルを実行する場合:**
+```powershell
+# 方法1: cmd経由で実行
+cmd /c start_dev.bat
+
+# 方法2: 呼び出し演算子を使用
+& .\start_dev.bat
+```
+
+または手動で：
+
+**ターミナル1 - FastAPI:**
+```powershell
+.\.venv\Scripts\Activate.ps1
+uvicorn api.app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+**ターミナル2 - Next.js:**
+```powershell
+cd web
+npm install  # 初回のみ
+npm run dev
+```
+
+ブラウザで以下にアクセス：
+- **ダッシュボード**: http://localhost:3000
+- **APIドキュメント**: http://localhost:8000/docs
 
 ### ドラフトファイルの準備
 
@@ -221,13 +360,30 @@ python main.py act --article-id "article_20251207_123456"
 
 指定したドラフトファイルのパスが正しいか確認してください。`data/drafts/`ディレクトリ内のファイルを指定する場合、相対パスまたは絶対パスを使用できます。
 
+### エラー: "モジュールが見つかりません" または "No module named 'xxx'"
+
+仮想環境が有効化されていない可能性があります。以下を確認してください：
+
+```powershell
+# 仮想環境を有効化
+.\.venv\Scripts\Activate.ps1
+
+# Pythonのパスを確認（.venv内のPythonが表示されるはず）
+where python
+
+# 依存関係を再インストール
+uv pip install -r requirements.txt
+uv pip install -r api/requirements.txt
+```
+
 ### CrewAIの実行エラー
 
 CrewAIの実行中にエラーが発生した場合、以下を確認してください：
 
-1. `config/crewai_config.json` が正しく設定されているか
-2. `.env` ファイルに必要なAPIキーが設定されているか
-3. `data/state/` ディレクトリが作成されているか
+1. 仮想環境が有効化されているか（`.\.venv\Scripts\Activate.ps1`）
+2. `config/crewai_config.json` が正しく設定されているか
+3. `.env` ファイルに必要なAPIキーが設定されているか
+4. `data/state/` ディレクトリが作成されているか
 
 ## 今後の拡張予定
 

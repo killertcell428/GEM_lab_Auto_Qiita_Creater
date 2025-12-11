@@ -73,6 +73,24 @@ def article_state_to_viewmodel(article_state: Dict[str, Any]) -> Dict[str, Any]:
     else:
         markdown = content
     
+    # 承認待ちの場合のヒントを更新
+    next_hint = get_next_action_hint(phase, article_state)
+    if article_state.get("pending_approval") and article_state.get("approval_status") == "pending":
+        deadline = article_state.get("approval_deadline")
+        if deadline:
+            try:
+                deadline_dt = datetime.fromisoformat(deadline)
+                now = datetime.now()
+                if now < deadline_dt:
+                    remaining = deadline_dt - now
+                    hours = int(remaining.total_seconds() / 3600)
+                    minutes = int((remaining.total_seconds() % 3600) / 60)
+                    next_hint = f"承認待ち（残り時間: {hours}時間{minutes}分）"
+                else:
+                    next_hint = "承認期限超過（自動投稿予定）"
+            except:
+                next_hint = "承認待ち"
+    
     return {
         "id": article_state.get("article_id"),
         "title": title,
@@ -85,9 +103,16 @@ def article_state_to_viewmodel(article_state: Dict[str, Any]) -> Dict[str, Any]:
         "qiitaItemId": article_state.get("qiita_item_id"),
         "kpiSummary": article_state.get("kpi"),
         "analysisResults": article_state.get("analysis_results"),
-        "nextActionHint": get_next_action_hint(phase, article_state),
+        "nextActionHint": next_hint,
         "createdAt": article_state.get("created_at"),
         "updatedAt": article_state.get("updated_at"),
-        "feedbackHistory": article_state.get("human_feedback", [])
+        "feedbackHistory": article_state.get("human_feedback", []),
+        # 承認関連フィールド
+        "pendingApproval": article_state.get("pending_approval", False),
+        "approvalDeadline": article_state.get("approval_deadline"),
+        "approvalStatus": article_state.get("approval_status"),
+        "scheduledPublishDate": article_state.get("scheduled_publish_date"),
+        # リサーチ結果
+        "researchReport": article_state.get("research_report")
     }
 

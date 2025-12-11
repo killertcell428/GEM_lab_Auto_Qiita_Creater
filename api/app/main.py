@@ -16,13 +16,36 @@ sys.path.insert(0, str(project_root))
 # .envファイルを読み込む
 load_dotenv(project_root / ".env")
 
-from api.app.routers import articles, feedback, phases, streaming, settings
+from api.app.routers import articles, feedback, phases, streaming, settings, approval, research, metrics
+from src.scheduler import get_scheduler
 
 app = FastAPI(
     title="Qiita記事投稿自動化パイプライン API",
     description="CrewAIベースのPDCAサイクルシステムのWeb API",
     version="1.0.0"
 )
+
+
+@app.on_event("startup")
+async def startup_event():
+    """アプリケーション起動時の処理"""
+    try:
+        scheduler = get_scheduler()
+        scheduler.start()
+        print("[STARTUP] スケジューラーを開始しました")
+    except Exception as e:
+        print(f"[WARN] スケジューラーの開始に失敗しました: {str(e)}")
+
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """アプリケーション終了時の処理"""
+    try:
+        scheduler = get_scheduler()
+        scheduler.stop()
+        print("[SHUTDOWN] スケジューラーを停止しました")
+    except Exception as e:
+        print(f"[WARN] スケジューラーの停止に失敗しました: {str(e)}")
 
 # CORS設定（Next.jsからのアクセスを許可）
 app.add_middleware(
@@ -39,6 +62,9 @@ app.include_router(feedback.router, prefix="/api/articles", tags=["feedback"])
 app.include_router(phases.router, prefix="/api/articles", tags=["phases"])
 app.include_router(streaming.router, prefix="/api/articles", tags=["streaming"])
 app.include_router(settings.router, prefix="/api", tags=["settings"])
+app.include_router(approval.router, prefix="/api/articles", tags=["approval"])
+app.include_router(research.router, prefix="/api/articles", tags=["research"])
+app.include_router(metrics.router, prefix="/api/articles", tags=["metrics"])
 
 
 @app.get("/")

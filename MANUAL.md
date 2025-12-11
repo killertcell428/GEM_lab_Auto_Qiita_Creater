@@ -4,6 +4,7 @@
 
 ## 目次
 
+- [初回セットアップ](#初回セットアップ)
 - [基本的な使い方](#基本的な使い方)
 - [フルPDCAサイクルの実行](#フルpdcaサイクルの実行)
 - [個別Phaseの実行](#個別phaseの実行)
@@ -13,12 +14,198 @@
 
 ---
 
+## 初回セットアップ
+
+### 1. 前提条件
+
+- **Python 3.12** がインストールされていること
+- **uv** がインストールされていること（推奨）または通常のpip
+- **Node.js** がインストールされていること（Web UIを使用する場合）
+
+### 2. uvのインストール（推奨）
+
+**Windows (PowerShell):**
+```powershell
+powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+インストール後、PowerShellを再起動するか、以下を実行：
+```powershell
+$env:PATH = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+```
+
+**確認:**
+```powershell
+uv --version
+```
+
+### 3. プロジェクトのセットアップ
+
+#### 方法A: 自動セットアップスクリプト（推奨）
+
+**Windows:**
+```powershell
+.\setup_uv.ps1
+```
+
+#### 方法B: 手動セットアップ
+
+**uvを使用する場合:**
+
+```powershell
+# プロジェクトディレクトリに移動
+cd C:\Users\uecha\Project_P\Personal\GEM_lab_Auto_Qiita_Creater
+
+# Python 3.12で仮想環境を作成
+uv venv .venv --python 3.12
+
+# 仮想環境を有効化
+.\.venv\Scripts\Activate.ps1
+
+# 依存関係をインストール
+uv pip install -r requirements.txt
+uv pip install -r api/requirements.txt
+```
+
+**通常のpipを使用する場合:**
+
+```powershell
+# 仮想環境を作成
+python -m venv .venv
+
+# 仮想環境を有効化
+.\.venv\Scripts\Activate.ps1
+
+# 依存関係をインストール
+pip install -r requirements.txt
+pip install -r api/requirements.txt
+```
+
+### 4. 設定ファイルの準備
+
+#### 環境変数の設定
+
+プロジェクトルートに `.env` ファイルを作成：
+
+```env
+# Google Gemini API キー（必須: 記事生成とAgentの推論に使用）
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# Qiita API アクセストークン（必須: 記事投稿時に使用）
+QIITA_ACCESS_TOKEN=your_qiita_access_token_here
+
+# Serper API キー（オプション: Web検索機能を使用する場合）
+SERPER_API_KEY=your_serper_api_key_here
+```
+
+**最小限のセットアップ**: 記事生成を試すだけなら、`GEMINI_API_KEY` のみ設定すれば動作します。
+
+#### 設定ファイルの確認
+
+以下のファイルが存在することを確認：
+
+```powershell
+# 設定ファイルが存在しない場合は、例ファイルからコピー
+if (-not (Test-Path config\config.json)) {
+    Copy-Item config\config.example.json config\config.json
+}
+if (-not (Test-Path config\crewai_config.json)) {
+    Copy-Item config\crewai_config.example.json config\crewai_config.json
+}
+```
+
+### 5. 起動方法
+
+#### CLIコマンドで実行（推奨）
+
+```powershell
+# 仮想環境を有効化（毎回必要）
+.\.venv\Scripts\Activate.ps1
+
+# フルPDCAサイクルを実行
+python main.py pdca --topic "Pythonでデータ解析" --draft-file "data/drafts/test_draft.md"
+```
+
+#### Web UIで実行
+
+**PowerShellから実行する場合（推奨）:**
+```powershell
+# PowerShellスクリプト版を使用（推奨）
+.\start_dev.ps1
+```
+
+**注意**: PowerShellの実行ポリシーでエラーが出る場合：
+```powershell
+# 実行ポリシーを確認
+Get-ExecutionPolicy
+
+# 実行ポリシーを変更（現在のユーザーのみ）
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# または、一時的に実行ポリシーをバイパス
+powershell -ExecutionPolicy Bypass -File .\start_dev.ps1
+```
+
+**CMDから実行する場合:**
+```cmd
+start_dev.bat
+```
+
+**PowerShellから.batファイルを実行する場合:**
+```powershell
+# 方法1: cmd経由で実行
+cmd /c start_dev.bat
+
+# 方法2: 呼び出し演算子を使用
+& .\start_dev.bat
+```
+
+または手動で：
+
+**ターミナル1 - FastAPI:**
+```powershell
+.\.venv\Scripts\Activate.ps1
+uvicorn api.app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+**ターミナル2 - Next.js:**
+```powershell
+cd web
+npm install  # 初回のみ
+npm run dev
+```
+
+ブラウザで以下にアクセス：
+- **ダッシュボード**: http://localhost:3000
+- **APIドキュメント**: http://localhost:8000/docs
+
+---
+
 ## 基本的な使い方
+
+### 仮想環境の有効化
+
+**重要**: CLIコマンドを実行する前に、必ず仮想環境を有効化してください。
+
+**Windows (PowerShell):**
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+**Windows (CMD):**
+```cmd
+.venv\Scripts\activate.bat
+```
+
+**Linux/Mac:**
+```bash
+source .venv/bin/activate
+```
 
 ### ヘルプの表示
 
-```bash
-# 全コマンドのヘルプ
+```powershell
+# 仮想環境を有効化した後
 python main.py --help
 
 # 各コマンドの詳細ヘルプ
@@ -272,22 +459,31 @@ cat data/state/pdca/main_pdca_cycle.json
 
 ### エラーが発生した場合
 
-1. **エラーメッセージを確認**
-   ```bash
+1. **仮想環境が有効化されているか確認**
+   ```powershell
+   # 仮想環境を有効化
+   .\.venv\Scripts\Activate.ps1
+   
+   # Pythonのパスを確認（.venv内のPythonが表示されるはず）
+   where python
+   ```
+
+2. **エラーメッセージを確認**
+   ```powershell
    python main.py pdca --topic "テスト" --draft-file "data/drafts/test_draft.md"
    # エラーメッセージが表示されます
    ```
 
-2. **環境変数を確認**
-   ```bash
+3. **環境変数を確認**
+   ```powershell
    # .envファイルが存在するか確認
-   cat .env
+   Get-Content .env
    ```
 
-3. **設定ファイルを確認**
-   ```bash
+4. **設定ファイルを確認**
+   ```powershell
    # config.jsonが存在するか確認
-   cat config/config.json
+   Get-Content config\config.json
    ```
 
 ### 実行が途中で止まった場合
@@ -309,6 +505,22 @@ cat data/state/pdca/main_pdca_cycle.json
 - `config/crewai_config.json` が正しく設定されているか確認
 - `.env` ファイルに必要なAPIキーが設定されているか確認
 - `data/state/` ディレクトリが作成されているか確認
+- 仮想環境が有効化されているか確認（`.\.venv\Scripts\Activate.ps1`）
+
+### 仮想環境が見つからない場合
+
+```powershell
+# 仮想環境を再作成
+uv venv .venv --python 3.12
+
+# または通常のpipを使用
+python -m venv .venv
+
+# 依存関係を再インストール
+.\.venv\Scripts\Activate.ps1
+uv pip install -r requirements.txt
+uv pip install -r api/requirements.txt
+```
 
 ---
 

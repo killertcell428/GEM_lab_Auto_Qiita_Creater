@@ -37,6 +37,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               >
                 新規記事作成
               </Link>
+              <Link
+                href="/research"
+                className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  pathname?.startsWith('/research')
+                    ? 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+              >
+                リサーチライブラリ
+              </Link>
             </nav>
           </div>
         </div>

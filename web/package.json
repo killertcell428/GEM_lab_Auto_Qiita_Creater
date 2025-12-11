@@ -18,7 +18,10 @@
     "date-fns": "^3.0.0",
     "react-syntax-highlighter": "^15.5.0",
     "@types/react-syntax-highlighter": "^15.5.11",
-    "prismjs": "^1.29.0"
+    "prismjs": "^1.29.0",
+    "plotly.js": "^2.27.0",
+    "react-plotly.js": "^2.6.0",
+    "wordcloud": "^1.2.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

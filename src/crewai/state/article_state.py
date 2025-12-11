@@ -25,6 +25,11 @@ class ArticleState:
     current_phase: str = "plan"  # "plan", "do", "check", "act", "completed"
     created_at: Optional[str] = None
     updated_at: Optional[str] = None
+    # 承認フロー関連フィールド
+    pending_approval: bool = False
+    approval_deadline: Optional[str] = None  # ISO形式
+    approval_status: Optional[str] = None  # "pending", "approved", "auto_published"
+    scheduled_publish_date: Optional[str] = None  # ISO形式
     
     def __post_init__(self):
         if self.created_at is None:
