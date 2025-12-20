@@ -1,0 +1,168 @@
+{
+  "step1_genome_preparation": {
+    "file_size_gb": 1,
+    "file_path": "/home/uecha/data/reference/rios/rios_genome.fa"
+  },
+  "step2_polyester_simulation": {
+    "n_fastq_files": 76,
+    "n_samples": 38,
+    "reads_per_sample_millions": 10,
+    "total_reads_millions": 379.7
+  },
+  "step3_alignment": {
+    "n_samples": 19,
+    "avg_mapping_rate": 99.99,
+    "avg_unique_rate": 99.99,
+    "per_sample_stats": {
+      "F_Brain_1": {
+        "total_reads": 9993890,
+        "mapped_reads": 9993224,
+        "uniquely_mapped": 9992578,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "F_Gonad_1": {
+        "total_reads": 9993166,
+        "mapped_reads": 9992485,
+        "uniquely_mapped": 9991824,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "F_Pectoral_1": {
+        "total_reads": 9991338,
+        "mapped_reads": 9990650,
+        "uniquely_mapped": 9989990,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "F_Tail_1": {
+        "total_reads": 10016044,
+        "mapped_reads": 10015397,
+        "uniquely_mapped": 10014776,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "F_Tail_2": {
+        "total_reads": 10010240,
+        "mapped_reads": 10009525,
+        "uniquely_mapped": 10008824,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "F_Tail_marina_1": {
+        "total_reads": 9995710,
+        "mapped_reads": 9995063,
+        "uniquely_mapped": 9994436,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "F_Toxin_1": {
+        "total_reads": 10009154,
+        "mapped_reads": 10008469,
+        "uniquely_mapped": 10007796,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "F_Toxin_2": {
+        "total_reads": 10015082,
+        "mapped_reads": 10014447,
+        "uniquely_mapped": 10013828,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "F_Toxin_sylv_1": {
+        "total_reads": 9990218,
+        "mapped_reads": 9989555,
+        "uniquely_mapped": 9988910,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "F_Wing_1": {
+        "total_reads": 9999190,
+        "mapped_reads": 9998537,
+        "uniquely_mapped": 9997908,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "F_Wing_2": {
+        "total_reads": 10004396,
+        "mapped_reads": 10003739,
+        "uniquely_mapped": 10003112,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "M_Brain_1": {
+        "total_reads": 10001174,
+        "mapped_reads": 10000488,
+        "uniquely_mapped": 9999816,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "M_Gonad_1": {
+        "total_reads": 9994254,
+        "mapped_reads": 9993581,
+        "uniquely_mapped": 9992934,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "M_Pectoral_1": {
+        "total_reads": 10003078,
+        "mapped_reads": 10002431,
+        "uniquely_mapped": 10001812,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "M_Tail_1": {
+        "total_reads": 10007652,
+        "mapped_reads": 10007006,
+        "uniquely_mapped": 10006376,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "M_Wing_1": {
+        "total_reads": 9992848,
+        "mapped_reads": 9992162,
+        "uniquely_mapped": 9991498,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "M_Wing_2": {
+        "total_reads": 9996950,
+        "mapped_reads": 9996287,
+        "uniquely_mapped": 9995632,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "M_Wing_3": {
+        "total_reads": 10010040,
+        "mapped_reads": 10009381,
+        "uniquely_mapped": 10008746,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      },
+      "M_Wing_volc_1": {
+        "total_reads": 9976612,
+        "mapped_reads": 9975966,
+        "uniquely_mapped": 9975350,
+        "mapping_rate": 99.99,
+        "unique_rate": 99.99
+      }
+    }
+  },
+  "step4_deseq2": {
+    "n_genes_detected": 14,
+    "n_samples": 19,
+    "n_sig_genes_sex": 3,
+    "n_sig_genes_sex_tissue": {
+      "wing_base": 3,
+      "tail_spine": 3,
+      "pectoral_muscle": 3,
+      "brain": 3,
+      "gonad": 3
+    }
+  },
+  "step5_cnv_detection": {
+    "status": "not_yet_executed",
+    "cnv_regions": null
+  }
+}

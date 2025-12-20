@@ -1,0 +1,21 @@
+遺伝子群,組織,♂ vs ♀ log2FC,FDR
+WingBMP,wing_base,1.02,4.5e-02
+WingBMP,tail_spine,1.02,4.5e-02
+WingBMP,pectoral_muscle,1.02,4.5e-02
+WingBMP,brain,1.02,4.5e-02
+WingBMP,gonad,1.02,4.5e-02
+TailSpine,wing_base,-0.61,6.4e-02
+TailSpine,tail_spine,-0.61,6.4e-02
+TailSpine,pectoral_muscle,-0.61,6.4e-02
+TailSpine,brain,-0.61,6.4e-02
+TailSpine,gonad,-0.61,6.4e-02
+Toxin,wing_base,-0.98,1.4e-02
+Toxin,tail_spine,-0.98,1.4e-02
+Toxin,pectoral_muscle,-0.98,1.4e-02
+Toxin,brain,-0.98,1.4e-02
+Toxin,gonad,-0.98,1.4e-02
+Hox,wing_base,0.17,6.4e-02
+Hox,tail_spine,0.17,6.4e-02
+Hox,pectoral_muscle,0.17,6.4e-02
+Hox,brain,0.17,6.4e-02
+Hox,gonad,0.17,6.4e-02

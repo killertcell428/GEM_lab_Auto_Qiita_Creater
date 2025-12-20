@@ -1,0 +1,17 @@
+クラスター,性/亜種,期待,検出,一致度
+WingBMP,M_Rios_ref,3,3,98.7%
+WingBMP,F_Rios_ref,2,2,98.7%
+WingBMP,M_Rios_volcanicus,4,3.8,96.1%
+WingBMP,F_Rios_volcanicus,2,2,98.3%
+TailSpine,M_Rios_ref,2,2,97.6%
+TailSpine,F_Rios_ref,3,2.9,97.1%
+TailSpine,M_Rios_marina,2,2,97.9%
+TailSpine,F_Rios_marina,4,3.8,95.5%
+ToxinClaw,M_Rios_ref,3,2.9,97.6%
+ToxinClaw,F_Rios_ref,2,2,97.8%
+ToxinClaw,M_Rios_volcanicus,2,1.9,96.8%
+ToxinClaw,F_Rios_volcanicus,2,2,97.9%
+ToxinTail,M_Rios_ref,2,2,98.7%
+ToxinTail,F_Rios_ref,4,3.8,96%
+ToxinTail,M_Rios_sylvestris,2,1.9,96.8%
+ToxinTail,F_Rios_sylvestris,5,4.9,98.8%

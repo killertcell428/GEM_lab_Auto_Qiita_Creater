@@ -1,0 +1,24 @@
+{
+  "update_target": "page_15",
+  "slide_type": "technical_data",
+  "data_sources": {
+    "tables": [
+      {
+        "name": "pipeline_statistics",
+        "file": "page15_pipeline_stats.csv",
+        "columns": ["step", "metric", "value"]
+      }
+    ]
+  },
+  "statistics": {
+    "mapping_rate": 99.99,
+    "detected_genes": 14,
+    "significant_genes_sex": 3,
+    "total_reads_millions": 379.7
+  },
+  "interpretations": [
+    "マッピング率: 99.99%",
+    "検出遺伝子数: 14",
+    "有意差遺伝子数（性差）: 3 (FDR<0.05)"
+  ]
+}

@@ -15,6 +15,7 @@ from src.crewai.state.article_state import ArticleState
 from src.crewai.crews.plan_crew import execute_plan_phase
 from src.crewai.crews.do_crew import execute_do_phase
 from src.notifications.email_sender import EmailSender
+from src.scheduler.draft_scheduler import DraftScheduler
 
 
 class ArticleScheduler:
@@ -24,6 +25,7 @@ class ArticleScheduler:
         self.scheduler = BackgroundScheduler()
         self.config = get_config()
         self.email_sender = EmailSender()
+        self.draft_scheduler = DraftScheduler()
         self._setup_schedules()
     
     def _setup_schedules(self):
@@ -42,14 +44,17 @@ class ArticleScheduler:
                 replace_existing=True
             )
         
-        # 金曜日のスケジュール（木曜日に実行）
+        # 金曜日のスケジュール（金曜日に直接投稿）
         friday_config = schedule_config.get("friday", {})
         if friday_config.get("enabled", False):
+            # 金曜日の指定時刻に実行（デフォルト: 10:00）
+            friday_hour = friday_config.get("hour", 10)
+            friday_minute = friday_config.get("minute", 0)
+            
             self.scheduler.add_job(
-                self._create_scheduled_article,
-                CronTrigger(day_of_week="thu", hour=9, minute=0),  # 木曜日 9:00
-                id="friday_article",
-                args=[friday_config],
+                self._publish_friday_draft,
+                CronTrigger(day_of_week="fri", hour=friday_hour, minute=friday_minute),  # 金曜日
+                id="friday_draft_article",
                 replace_existing=True
             )
         
@@ -156,6 +161,22 @@ class ArticleScheduler:
             
         except Exception as e:
             print(f"[ERROR] 承認通知メール送信エラー: {str(e)}")
+    
+    def _publish_friday_draft(self):
+        """金曜日にドラフトファイルを直接投稿"""
+        try:
+            print(f"[SCHEDULER] 金曜日のドラフト投稿を開始: {datetime.now()}")
+            result = self.draft_scheduler.publish_next_draft(auto_publish=True)
+            
+            if result.get("success"):
+                print(f"[SCHEDULER] 金曜日のドラフト投稿成功: {result.get('url', 'N/A')}")
+            else:
+                print(f"[ERROR] 金曜日のドラフト投稿失敗: {result.get('error', 'Unknown error')}")
+                
+        except Exception as e:
+            print(f"[ERROR] 金曜日のドラフト投稿エラー: {str(e)}")
+            import traceback
+            traceback.print_exc()
     
     def _check_approval_deadlines(self):
         """承認期限をチェックして、期限超過の場合は自動投稿"""

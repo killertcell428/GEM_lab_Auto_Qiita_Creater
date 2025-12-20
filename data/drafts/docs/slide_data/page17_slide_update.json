@@ -1,0 +1,22 @@
+{
+  "update_target": "page_17",
+  "slide_type": "technical_data",
+  "data_sources": {
+    "tables": [
+      {
+        "name": "gene_group_expression",
+        "file": "page17_gene_group_expression_table.csv",
+        "columns": ["遺伝子群", "組織", "♂ vs ♀ log2FC", "FDR"]
+      }
+    ],
+    "plots": [
+      {
+        "type": "heatmap",
+        "library": "ECharts",
+        "data_file": "page17_heatmap_echarts.json",
+        "description": "Sex × Tissue expression profile heatmap"
+      }
+    ]
+  },
+  "interpretations": ["- WingBMP（wing_base）: ♂↑ log2FC=1.02 (FDR=4.5e-02)", "- WingBMP（tail_spine）: ♂↑ log2FC=1.02 (FDR=4.5e-02)", "- WingBMP（pectoral_muscle）: ♂↑ log2FC=1.02 (FDR=4.5e-02)", "- WingBMP（brain）: ♂↑ log2FC=1.02 (FDR=4.5e-02)", "- WingBMP（gonad）: ♂↑ log2FC=1.02 (FDR=4.5e-02)", "- Toxin（wing_base）: ♀↑ log2FC=-0.98 (FDR=1.4e-02)", "- Toxin（tail_spine）: ♀↑ log2FC=-0.98 (FDR=1.4e-02)", "- Toxin（pectoral_muscle）: ♀↑ log2FC=-0.98 (FDR=1.4e-02)", "- Toxin（brain）: ♀↑ log2FC=-0.98 (FDR=1.4e-02)", "- Toxin（gonad）: ♀↑ log2FC=-0.98 (FDR=1.4e-02)"]
+}

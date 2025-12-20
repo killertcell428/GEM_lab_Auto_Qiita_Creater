@@ -1,0 +1,6 @@
+step,metric,value
+Genome preparation,Genome file size (GB),1
+Polyester simulation,Total reads (millions),379.7
+Alignment,Average mapping rate (%),99.99
+DESeq2,Detected genes,14
+CNV detection,CNV regions,Not executed

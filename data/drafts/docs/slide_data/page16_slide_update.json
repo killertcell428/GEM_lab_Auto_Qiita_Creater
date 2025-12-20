@@ -1,0 +1,38 @@
+{
+  "update_target": "page_16",
+  "slide_type": "technical_data",
+  "data_sources": {
+    "tables": [
+      {
+        "name": "cnv_comparison",
+        "file": "page16_cnv_comparison_table.csv",
+        "columns": ["クラスター", "性/亜種", "期待", "検出", "一致度"]
+      }
+    ],
+    "plots": [
+      {
+        "type": "bar_chart",
+        "library": "Chart.js",
+        "name": "sex_cnv_comparison",
+        "data_file": "page16_sex_cnv_chart.json",
+        "description": "Sex difference CNV comparison (expected vs detected)"
+      },
+      {
+        "type": "grouped_bar_chart",
+        "library": "Chart.js",
+        "name": "subspecies_cnv_comparison",
+        "data_file": "page16_subspecies_cnv_chart.json",
+        "description": "Subspecies CNV comparison (expected vs detected)"
+      }
+    ]
+  },
+  "statistics": {
+    "correlation": 0.998,
+    "n_clusters": 4,
+    "n_subspecies": 4
+  },
+  "interpretations": [
+    "期待コピーとの相関 r=0.998、CNVシミュレーションの高精度を実証",
+    "sylvestrisのToxinTail（検出値）は期待値5に近く、森林型の毒腺強化仮説を支持"
+  ]
+}

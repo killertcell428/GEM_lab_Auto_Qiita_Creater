@@ -1,0 +1,33 @@
+{
+  "update_target": "page_14",
+  "slide_type": "technical_data",
+  "data_sources": {
+    "tables": [
+      {
+        "name": "cnv_metadata",
+        "file": "page14_cnv_metadata_table.csv",
+        "columns": ["subspecies", "WingBMP", "TailSpine", "ToxinClaw", "ToxinTail", "sex_note"]
+      },
+      {
+        "name": "tissue_sample_summary",
+        "file": "page14_tissue_sample_summary.csv",
+        "columns": ["tissue", "n_samples"]
+      }
+    ]
+  },
+  "specifications": {
+    "backbone_species": "Gallus gallus",
+    "backbone_version": "GRCg7b",
+    "genome_size_gb": 1,
+    "n_chromosomes": 50,
+    "total_samples": 18,
+    "n_tissues": 6,
+    "n_sexes": 2,
+    "n_subspecies": 4
+  },
+  "interpretations": [
+    "バックボーン: Gallus gallus (GRCg7b)",
+    "総サンプル数: 18 (6組織 × 2性別 × 4亜種)",
+    "ゲノムサイズ: 1 GB"
+  ]
+}
